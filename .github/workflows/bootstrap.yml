@@ -1,5 +1,6 @@
 name: Populate FBDG research package
 
+# One-shot bootstrap rerun after staging integrity verification.
 on:
   push:
     paths:
