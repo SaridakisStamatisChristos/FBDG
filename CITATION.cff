@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this research artifact, please cite the paper and this repository."
+title: "Dynamic Fixed-Batch Retrieval: Structured Codes and Random-Family Locality Barriers"
+type: software
+authors:
+  - family-names: Saridakis
+    given-names: Stamatis-Christos
+version: 1.0.0
+date-released: 2026-10-13
+repository-code: "https://github.com/SaridakisStamatisChristos/FBDG"

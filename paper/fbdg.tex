@@ -1,0 +1,1832 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Dynamic Fixed-Batch Retrieval: Structured Codes and Random-Family Locality Barriers},
+  pdfauthor={Stamatis-Christos Saridakis},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Dynamic Fixed-Batch Retrieval: Structured Codes and Random-Family
+Locality Barriers}
+\author{Stamatis-Christos Saridakis}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We study a dynamic exact-retrieval problem in which a Boolean vector is
+maintained under point updates while each query asks for the contents of
+one set from a fixed family of sparse batches. We call the model
+Fixed-Batch Dynamic Gather (FBDG). The central question is whether a
+representation can simultaneously have very low write locality and very
+low recovery locality when every requested batch has size
+\(w=\Theta(\log n)\) and one dynamic word contains \(w\) bits. We prove
+a structure-versus-randomness separation at write locality two. On the
+positive side, an explicit Fano-based construction yields infinite
+families with \(M=n\), \(w=\Theta(\log n)\), two fixed update locations
+per source bit, and two adaptive-or-nonadaptive word probes per query.
+On the negative side, if \(M=\Theta(n)\) batches are sampled
+independently and uniformly from the \(w\)-subsets of \([n]\), then with
+high probability every exact canonical representation in which each
+source coordinate has at most two fixed update locations requires
+\(q=\Omega(w)\) probes, even when cell contents are arbitrary nonlinear
+functions and the decoder is fully adaptive. The proof uses a
+diffuse-versus-hub dichotomy for the fixed support system. Diffuse
+supports force a linear matching in some random batch uniformly over all
+support systems. Hub-concentrated supports reduce to a short-sketch
+problem over bounded residual source groups, where a self-contained
+adaptive decision-tree counting lemma forces linearly many residual
+probes. We additionally prove a state-local congestion inequality that
+applies even when write locations move with the state or history; it
+shows that any hypothetical \(q=o(w)\) moving-support scheme for a
+random family must maintain high-influence write hubs at every reachable
+state. Thus the remaining frontier is not generic nonlinearity or
+adaptivity, but the power of moving support geometry.
+\end{abstract}
+
+\hypertarget{introduction}{%
+\section{1. Introduction}\label{introduction}}
+
+Dynamic data structures are normally specified by an update operation
+and a query operation, with complexity measured as a trade-off between
+the two. In many algorithmic and storage settings, however, the query
+workload is not arbitrary. A fixed collection of small coordinate groups
+is known in advance, and every query asks for the exact contents of one
+of those groups. Such workloads arise naturally in batched retrieval,
+coded storage, materialized views, packed microstructures, and
+reductions that decompose a larger computation into many fixed local
+retrieval tasks.
+
+This paper isolates that regime in a minimal exact-recovery problem. The
+logical state is a Boolean vector \[
+ x\in\{0,1\}^n,
+\] maintained under single-coordinate updates. A fixed family \[
+ \mathcal B=(B_1,\ldots,B_M),\qquad B_i\in\binom{[n]}{w},
+\] is known at preprocessing time. Query \(i\) must return the complete
+vector \(x|_{B_i}\). Dynamic memory is divided into \(w\)-bit cells. We
+measure \textbf{write locality} \(u\), the number of dynamic cells that
+may change after one source-coordinate update, and \textbf{query
+locality} \(q\), the number of dynamic cells probed by a query.
+Computation is free in the locality model, cell contents may be
+arbitrary nonlinear functions of the source state, and query probes may
+be fully adaptive.
+
+The regime of interest is \[
+ M=\Theta(n),\qquad w=\Theta(\log n).
+\] Here one word has enough information capacity to hold an entire
+answer, so a large query lower bound cannot be attributed merely to
+output size. The question is instead whether a low-write representation
+can arrange information so that every prescribed \(w\)-bit answer is
+concentrated in a few words.
+
+A tempting conjecture is that constant write locality should force
+\(\Theta(w)\) recovery locality. At write locality one, variants of this
+intuition can often be made rigorous. At write locality two, however,
+the universal statement is false. A seven-coordinate Fano-plane gadget
+already admits a linear representation with two fixed write locations
+per source bit and two word probes per requested triple. We show that
+this is not only a finite curiosity: the gadget can be packed into an
+explicit infinite family with \[
+ M=n,\qquad w=\Theta(\log n),\qquad u=2,\qquad q=2.
+\] Thus the correct question is structural rather than purely numerical.
+
+\begin{quote}
+\textbf{Which fixed batch families admit constant recovery locality
+under two fixed writes, and which families force recovery locality
+linear in the batch size?}
+\end{quote}
+
+Our main theorem answers this for random batch families under a
+canonical fixed-support representation. Suppose the \(M=\Theta(n)\)
+batches are sampled independently and uniformly from the \(w\)-subsets
+of \([n]\), where \(w=\Theta(\log n)\). Then with high probability every
+exact canonical encoding into \(w\)-bit cells, in which each source
+coordinate can affect at most two fixed physical cells, satisfies \[
+ \boxed{q=\Omega(w)}.
+\] The theorem allows arbitrary nonlinear cell functions and fully
+adaptive exact decoding.
+
+The proof exposes a geometric dichotomy in the fixed update-support
+system. Think of every source coordinate as a set of one or two memory
+cells. If the support system is \textbf{diffuse}, then a random
+requested batch contains many pairwise disjoint supports. An adaptive
+query must hit every one of them, immediately forcing \(\Omega(w)\)
+probes. If the support system is \textbf{hub-concentrated}, a small set
+\(H\) of memory cells touches a constant fraction of the source
+coordinates. The \(hw\) bits stored in \(H\) can be given to the decoder
+for free as a sketch. Canonicality then limits how many source
+coordinates can be hidden entirely inside the hub and bounds the size of
+every residual nonhub source group. Random batches spread across those
+residual groups. After selecting several group-disjoint batches, exact
+recovery becomes a short-sketch problem for many independent target bits
+in distinct groups. A direct adaptive decision-tree counting argument
+then forces \(\Omega(w)\) residual probes per original query.
+
+The fixed-support hypothesis is essential to this geometry. If the
+locations modified by coordinate \(j\) may depend on the current state
+or update history, the static support graph disappears. To separate what
+is genuinely known from what remains open, we also prove a
+\textbf{state-local congestion inequality} that does not require fixed
+supports or a canonical global representation. At any reachable state,
+if a query uses \(q\) probes and each update changes at most \(u\)
+cells, then low \(q\) forces some current memory cell to be influenced
+by many source coordinates. For random batch families this implies that
+any hypothetical \(q=o(w)\) moving-support scheme must maintain
+high-influence write hubs at every reachable state. The unrestricted
+\(u=2\) case is therefore reduced to the question of whether such hubs
+can move coherently enough to beat the fixed-support barrier.
+
+\hypertarget{results}{%
+\subsection{1.1 Results}\label{results}}
+
+The paper establishes three principal results.
+
+\textbf{Explicit structured upper bound.} We give an explicit Fano-based
+family with \(M=n\), \(w=\Theta(\log n)\), all source coordinates
+active, fixed write locality \(u=2\), and query locality \(q=2\). This
+proves that two-write constant recovery is asymptotically possible for
+highly structured incidence families.
+
+\textbf{State-local congestion barrier.} For an arbitrary exact dynamic
+representation at a reachable state \(\sigma\), let \(f(\sigma)\) be the
+maximum number of source coordinates whose current one-bit update can
+modify the same cell. If \(\rho(\mathcal B)\) denotes the repeated-pair
+excess of the batch family, then \[
+ M\left(\frac{w^2}{q}-w\right)
+ \le
+ un\bigl(f(\sigma)-1\bigr)+2\rho(\mathcal B).
+\] For a random \(w\)-uniform family with \(M=\Theta(n)\) and
+\(w=\Theta(\log n)\), \(\rho(\mathcal B)=\operatorname{polylog}(n)\)
+with high probability. Hence bounded state-local congestion
+\(f(\sigma)=O(w)\) already forces \(q=\Omega(w)\), even without fixed
+support. Conversely, \(q=o(w)\) requires \[
+ f(\sigma)=\Omega\!\left(\frac{w^2}{uq}\right)
+\] at every reachable state.
+
+\textbf{Random-family fixed-support lower bound.} For random
+\(M=\Theta(n)\), \(w=\Theta(\log n)\) batch families, every exact
+canonical nonlinear encoding with at most two fixed update locations per
+source coordinate has \(q=\Omega(w)\) with high probability, even for
+fully adaptive queries.
+
+These results yield a three-way frontier:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{structured fixed-support \(u=2\):} \(q=2\);
+\item
+  \textbf{random fixed-support \(u=2\):} \(q=\Omega(w)\);
+\item
+  \textbf{moving/history-dependent \(u=2\):} a high-congestion escape is
+  required, while the full \(\Omega(w)\) bound remains open.
+\end{itemize}
+
+\hypertarget{contribution-boundary}{%
+\subsection{1.2 Contribution boundary}\label{contribution-boundary}}
+
+The surrounding literature contains several closely related ingredients.
+Batch codes and combinatorial batch codes study retrieval from
+distributed storage (\protect\hyperlink{ref-ishai2004batch}{Ishai et al.
+2004}; \protect\hyperlink{ref-paterson2009cbc}{Paterson, Stinson, and
+Wei 2009}; \protect\hyperlink{ref-rawat2016batchgraphs}{Rawat et al.
+2016}). Locally updatable and locally decodable codes and compression
+schemes explicitly study simultaneous read and write locality
+(\protect\hyperlink{ref-chandran2014luldc}{Chandran, Kanukurthi, and
+Ostrovsky 2014}; \protect\hyperlink{ref-vatedka2020bigdata}{Vatedka and
+Tchamkerten 2020}; \protect\hyperlink{ref-vatedka2020worstcase}{Vatedka,
+Chandar, and Tchamkerten 2020}). Arbitrary-access-set storage codes
+tailor coding to prescribed access families and optimize update cost
+(\protect\hyperlink{ref-maturana2021arbitrary}{Maturana and Rashmi
+2021}). Functional batch codes study recovery of prescribed linear
+combinations and, recently, bounded-size recovery sets
+(\protect\hyperlink{ref-zhang2020functional}{Y. Zhang, Etzion, and
+Yaakobi 2020}; \protect\hyperlink{ref-oksner2026functional}{Oksner et
+al. 2026}; \protect\hyperlink{ref-boruchovsky2026allsymbol}{Boruchovsky
+et al. 2026}). Query-with-Sketch gives a general modern framework for
+adaptive probing with a short global sketch
+(\protect\hyperlink{ref-garg2026qws}{Garg et al. 2026}).
+
+Accordingly, we do \textbf{not} claim that local update plus local
+decode, two-replication support graphs, finite-geometry coding, or
+sketch-aided adaptive probing are new ideas. The bounded claim is
+narrower: within the literature searched through October 2026, we did
+not identify a materially equivalent theorem showing that a random fixed
+family of \(\Theta(\log n)\)-coordinate exact retrieval requests forces
+\(\Omega(\log n)\) adaptive word probes under two \textbf{fixed} update
+locations per source coordinate for arbitrary nonlinear canonical
+encodings. We therefore describe the theorem as \textbf{likely distinct
+within the searched scope}, not as an absolute priority claim.
+
+\hypertarget{model-and-notation}{%
+\section{2. Model and notation}\label{model-and-notation}}
+
+\hypertarget{fixed-batch-dynamic-gather}{%
+\subsection{2.1 Fixed-Batch Dynamic
+Gather}\label{fixed-batch-dynamic-gather}}
+
+An FBDG instance consists of a universe \([n]=\{1,\ldots,n\}\) and a
+fixed batch family \[
+\mathcal B=(B_1,\ldots,B_M),\qquad B_i\in\binom{[n]}{w}.
+\] The maintained logical state is \(x\in\{0,1\}^n\). An update flips
+one coordinate \(x_j\). Query \(i\) must return the exact ordered
+restriction \(x|_{B_i}\).
+
+Dynamic memory consists of cells that each store exactly \(w\) bits. The
+description of \(\mathcal B\), the encoding/decoding algorithms, and
+state-independent constants are free. We count dynamic cell probes. A
+query may adapt its next address to values observed in earlier probes.
+Unless stated otherwise, queries are deterministic and exact; the lower
+bounds extend immediately to zero-error randomized queries with a
+worst-case probe bound by fixing the random tape.
+
+The locality parameters are:
+
+\begin{itemize}
+\tightlist
+\item
+  \(u\): maximum number of dynamic cells whose contents may change after
+  one source-coordinate update;
+\item
+  \(q\): maximum number of dynamic cells probed by one query.
+\end{itemize}
+
+The paper studies locality rather than word-operation time. In
+particular, the positive construction proves \(q=2\) in the
+cell-probe/locality sense; it does not claim that every arbitrary packed
+output permutation can be assembled in \(O(1)\) instructions on every
+standard word-RAM instruction set.
+
+\hypertarget{canonical-encodings-and-essential-fixed-supports}{%
+\subsection{2.2 Canonical encodings and essential fixed
+supports}\label{canonical-encodings-and-essential-fixed-supports}}
+
+A \textbf{canonical encoding} is a map \[
+E:\{0,1\}^n\longrightarrow (\{0,1\}^w)^{\mathcal C},
+\] where \(\mathcal C\) is an arbitrary set of dynamic cells and
+\(E_c(x)\) denotes the content of cell \(c\). Canonicality means that
+memory is a function of the current logical state alone, not of the
+update path used to reach that state.
+
+For a logical coordinate \(j\), define its \textbf{essential support} \[
+S_j
+:=
+\{c\in\mathcal C:\exists x\text{ such that }E_c(x)\ne E_c(x\oplus e_j)\}.
+\] The canonical fixed-support condition with write locality two is \[
+|S_j|\le2\qquad\forall j\in[n].
+\] Using essential supports removes dummy write locations: \(c\in S_j\)
+exactly when coordinate \(j\) can actually influence cell \(c\) in some
+state.
+
+Define the active source set \[
+A:=\bigcup_{i=1}^M B_i.
+\] Only coordinates in \(A\) are semantically required to be
+recoverable.
+
+\hypertarget{state-local-supports-for-unrestricted-representations}{%
+\subsection{2.3 State-local supports for unrestricted
+representations}\label{state-local-supports-for-unrestricted-representations}}
+
+For the congestion theorem we allow the representation to be
+noncanonical and the write locations to move. Fix any reachable memory
+state \(\sigma\) representing logical vector \(x\). We assume the update
+transition from a given memory state under a specified source-bit flip
+is deterministic; equivalently, any update randomness is regarded as
+fixed before defining the state-local influence sets. Let
+\(U_j(\sigma)\) be the set of cells whose contents change when the next
+update flips coordinate \(j\). We assume \[
+|U_j(\sigma)|\le u.
+\] Let \(P_B(\sigma)\) denote the set of cells probed along the actual
+adaptive query path for batch \(B\) at state \(\sigma\). Define \[
+d_c(\sigma):=|\{j:c\in U_j(\sigma)\}|,
+\qquad
+f(\sigma):=\max_c d_c(\sigma).
+\] Thus \(f(\sigma)\) measures instantaneous write congestion or
+influence concentration.
+
+For an unordered source pair \(\{a,b\}\) define its batch codegree \[
+\deg_{\mathcal B}(a,b):=|\{i:\{a,b\}\subseteq B_i\}|,
+\] and define the \textbf{pair-repetition excess} \[
+\rho(\mathcal B)
+:=
+\sum_{\{a,b\}\subseteq[n]}
+\bigl(\deg_{\mathcal B}(a,b)-1\bigr)_+.
+\]
+
+\hypertarget{structured-two-write-families}{%
+\section{3. Structured two-write
+families}\label{structured-two-write-families}}
+
+We first show that \(u=2\) does not universally imply \(q=\Omega(w)\),
+even asymptotically when \(w=\Theta(\log n)\) and \(M=n\).
+
+\hypertarget{a-seven-coordinate-fano-gadget}{%
+\subsection{3.1 A seven-coordinate Fano
+gadget}\label{a-seven-coordinate-fano-gadget}}
+
+Consider source bits \[
+U_0,U_1,U_2,L_1,L_2,R_1,R_2\in\{0,1\}.
+\] Store three 3-bit cells \[
+\begin{aligned}
+C_0&=(U_0,L_1,L_2),\\
+C_1&=(U_1,R_1,R_2),\\
+C_2&=(U_2,L_1\oplus R_1,L_2\oplus R_2).
+\end{aligned}
+\] Every \(U_i\) affects one cell. Each \(L_i\) affects \(C_0\) and
+\(C_2\), and each \(R_i\) affects \(C_1\) and \(C_2\). Therefore the
+fixed write locality is at most two.
+
+Label the seven source coordinates by \[
+1=U_0,\quad 2=U_1,\quad 3=L_1,\quad 4=U_2,\quad
+5=L_2,\quad 6=R_1,\quad 7=R_2.
+\] Use the seven Fano lines \[
+123,\ 145,\ 167,\ 246,\ 257,\ 347,\ 356.
+\] Each line can be recovered from two cells. One fixed decoder
+assignment is shown below.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Requested line & Source bits & Two cells \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(123\) & \(U_0,U_1,L_1\) & \(C_0,C_1\) \\
+\(145\) & \(U_0,U_2,L_2\) & \(C_0,C_2\) \\
+\(167\) & \(U_0,R_1,R_2\) & \(C_0,C_1\) \\
+\(246\) & \(U_1,U_2,R_1\) & \(C_1,C_2\) \\
+\(257\) & \(U_1,L_2,R_2\) & \(C_0,C_1\) \\
+\(347\) & \(L_1,U_2,R_2\) & \(C_0,C_2\) \\
+\(356\) & \(L_1,L_2,R_1\) & \(C_0,C_1\) \\
+\end{longtable}
+
+For line \(347\), for example, \(C_0\) reveals \(L_1,L_2\) and \(C_2\)
+reveals \(U_2\) and \(L_2\oplus R_2\), so \(R_2\) is recovered by one
+xor. The other cases are immediate or symmetric.
+
+\textbf{Proposition 3.1.} The seven-line Fano family admits an exact
+linear canonical encoding with fixed write locality \(u=2\) and query
+locality \(q=2\).
+
+The proposition was exhaustively revalidated computationally over all
+\(2^7\) logical states and all seven requested lines, for \(896\)
+state/query cases. A stronger check over every valid decoder-pair/line
+combination covered \(1536\) cases; see Appendix C.
+
+\hypertarget{packing-t-fano-copies-into-three-words}{%
+\subsection{\texorpdfstring{3.2 Packing \(t\) Fano copies into three
+words}{3.2 Packing t Fano copies into three words}}\label{packing-t-fano-copies-into-three-words}}
+
+Take \(t\) independent copies of the seven-bit gadget. For copy
+\(r\in[t]\), let \(C_0^{(r)},C_1^{(r)},C_2^{(r)}\) be its three 3-bit
+encoded cells. Pack corresponding cells across copies into three global
+words \[
+\widehat C_k
+:=
+C_k^{(1)}\Vert C_k^{(2)}\Vert\cdots\Vert C_k^{(t)},
+\qquad k\in\{0,1,2\}.
+\] Each global word has \[
+W:=3t
+\] bits. Each source bit still affects at most two global words.
+
+A global batch chooses one Fano line in each copy and asks for the union
+of the selected triples, so every global batch contains exactly \(3t=W\)
+source bits. If every chosen line can be decoded from the same pair of
+global words, the whole batch is recoverable with two probes.
+
+Define \[
+\mathcal L_{01}=\{123,167,257,356\}.
+\] Every line in \(\mathcal L_{01}\) avoids \(U_2\) and is decodable
+from \((\widehat C_0,\widehat C_1)\). Hence every sequence in
+\(\mathcal L_{01}^t\) defines a distinct \(W\)-bit batch answerable from
+those two words. There are \(4^t\) such sequences.
+
+To ensure that every source coordinate is active, include the three
+global line patterns \[
+(145)^t,\qquad (246)^t,\qquad (347)^t.
+\] Together they cover all seven source labels in every copy. Complete
+the family by choosing any additional \(7t-3\) distinct patterns from
+\(\mathcal L_{01}^t\). Since \[
+4^t\ge 7t-3\qquad\text{for all }t\ge1,
+\] this gives exactly \(7t\) distinct global batches, every one of size
+\(W=3t\), and every source coordinate is active.
+
+\textbf{Theorem 3.2 (explicit structured family).} For every \(t\ge1\)
+there is an FBDG gadget with \[
+n_g=M_g=7t,\qquad w=3t,
+\] all source coordinates active, and an exact linear canonical encoding
+into three \(w\)-bit cells with \[
+u=2,\qquad q=2.
+\]
+
+Taking \(g=2^t\) disjoint gadgets yields \[
+n=M=7t2^t,
+\qquad
+w=3t=\Theta(\log n),
+\qquad
+u=2,
+\qquad
+q=2.
+\] Thus constant recovery locality persists asymptotically for a highly
+structured fixed batch family.
+
+The construction is deliberately simple. Its purpose is not to optimize
+storage or coding rate against the batch-code literature, but to show
+that the two-write locality barrier is genuinely incidence-dependent.
+
+\hypertarget{a-state-local-congestion-theorem}{%
+\section{4. A state-local congestion
+theorem}\label{a-state-local-congestion-theorem}}
+
+The next theorem does \textbf{not} assume fixed supports or a canonical
+global encoding. It identifies what any low-query representation must
+look like at each reachable state.
+
+\hypertarget{adaptive-hitting-at-a-reachable-state}{%
+\subsection{4.1 Adaptive hitting at a reachable
+state}\label{adaptive-hitting-at-a-reachable-state}}
+
+\textbf{Lemma 4.1 (state-local adaptive hitting).} Fix a reachable
+memory state \(\sigma\), a batch \(B\), and \(j\in B\). Then \[
+P_B(\sigma)\cap U_j(\sigma)\ne\varnothing.
+\]
+
+\textbf{Proof.} Let \(\sigma'\) be the memory state reached by applying
+the update that flips logical coordinate \(j\). Suppose the query path
+on \(\sigma\) avoids every cell changed by that update. The first probe
+therefore sees the same value in \(\sigma\) and \(\sigma'\).
+Inductively, because the adaptive algorithm sees the same transcript, it
+chooses the same next address, which is again outside the changed set
+and therefore has the same value. The entire transcript and output are
+identical on \(\sigma\) and \(\sigma'\), contradicting exactness because
+requested bit \(j\) changed. \(\square\)
+
+\hypertarget{congestion-inequality}{%
+\subsection{4.2 Congestion inequality}\label{congestion-inequality}}
+
+\textbf{Theorem 4.2 (state-local congestion).} Consider any exact FBDG
+representation at a reachable state \(\sigma\). Suppose every one-bit
+update changes at most \(u\) cells and every query probes at most \(q\)
+cells. Then \[
+\boxed{
+M\left(\frac{w^2}{q}-w\right)
+\le
+un\bigl(f(\sigma)-1\bigr)+2\rho(\mathcal B).
+}
+\] Equivalently, \[
+q
+\ge
+\frac{w^2}
+{w+u(f(\sigma)-1)+2\rho(\mathcal B)/M}.
+\]
+
+\textbf{Proof.} Fix batch \(B_i\). By Lemma 4.1, for every \(j\in B_i\)
+choose one cell \[
+\phi_i(j)\in P_{B_i}(\sigma)\cap U_j(\sigma).
+\] For each probed cell \(c\), let \[
+m_{i,c}:=|\{j\in B_i:\phi_i(j)=c\}|.
+\] The nonzero \(m_{i,c}\) form a partition of the \(w\) source
+coordinates among at most \(q\) cells. Hence, by Cauchy-Schwarz, \[
+\sum_c m_{i,c}^2\ge\frac{w^2}{q}.
+\] Therefore the number of unordered source pairs assigned to a common
+cell satisfies \[
+\sum_c\binom{m_{i,c}}2
+=
+\frac12\left(\sum_c m_{i,c}^2-w\right)
+\ge
+\frac12\left(\frac{w^2}{q}-w\right).
+\] Summing over all \(M\) batches gives at least \[
+\frac M2\left(\frac{w^2}{q}-w\right)
+\] pair/batch incidences whose two coordinates share a current update
+cell.
+
+Now upper-bound those incidences. Ignoring multiplicity across batches,
+the number of distinct source pairs sharing at least one current update
+cell is at most \[
+\sum_c\binom{d_c(\sigma)}2
+\le
+\frac{f(\sigma)-1}{2}\sum_c d_c(\sigma).
+\] Since each of the \(n\) source coordinates changes at most \(u\)
+cells, \[
+\sum_c d_c(\sigma)
+=
+\sum_{j=1}^n|U_j(\sigma)|
+\le un.
+\] A source pair that occurs in several batches can contribute at most
+one incidence without repetition plus at most \[
+\deg_{\mathcal B}(a,b)-1
+\] additional incidences. Summing these extras gives
+\(\rho(\mathcal B)\). Hence \[
+\frac M2\left(\frac{w^2}{q}-w\right)
+\le
+\frac{un(f(\sigma)-1)}2+\rho(\mathcal B),
+\] which proves the theorem after multiplying by two. \(\square\)
+
+\hypertarget{random-families-have-negligible-pair-repetition}{%
+\subsection{4.3 Random families have negligible pair
+repetition}\label{random-families-have-negligible-pair-repetition}}
+
+\textbf{Lemma 4.3.} Let \(M=\Theta(n)\) and let the batches be
+independent uniform \(w\)-subsets with \(w=\Theta(\log n)\). Then with
+high probability \[
+\rho(\mathcal B)=O(w^5)=o(n).
+\]
+
+\textbf{Proof.} For a fixed pair \(\{a,b\}\), let
+\(D_{ab}=\deg_{\mathcal B}(a,b)\). Its success probability in one batch
+is \[
+p_2=\frac{w(w-1)}{n(n-1)}.
+\] Since \((D-1)_+\le\binom D2\), \[
+\mathbb E\rho
+\le
+\binom n2\binom M2p_2^2
+=O(w^4).
+\] Markov's inequality gives \[
+\Pr[\rho>w^5]=O(1/w)=o(1).
+\] \(\square\)
+
+\textbf{Corollary 4.4 (bounded congestion is hard).} For such a random
+family, if \(u=O(1)\) and \[
+f(\sigma)=O(w)
+\] at a reachable state, then \[
+q=\Omega(w).
+\]
+
+\textbf{Corollary 4.5 (moving-hub requirement).} For such a random
+family, any exact scheme with \(u=O(1)\) and \(q=o(w)\) must satisfy, at
+every reachable state, \[
+f(\sigma)
+\ge
+1+
+\frac{w^2/q-w-o(1)}{u}
+=
+\Omega\!\left(\frac{w^2}{uq}\right).
+\] In particular, at \(q=\Theta(w/\log w)\) and constant \(u\), some
+current cell must be influenced by \(\Omega(w\log w)\) source
+coordinates.
+
+The corollary is the structural reason the moving-support case is
+difficult: any escape from the fixed-support lower bound must
+continually create and move highly congested write hubs.
+
+\hypertarget{main-lower-bound-for-random-fixed-support-families}{%
+\section{5. Main lower bound for random fixed-support
+families}\label{main-lower-bound-for-random-fixed-support-families}}
+
+We now prove the paper's main theorem.
+
+\textbf{Theorem 5.1 (random fixed-support nonlinear two-write barrier).}
+Fix constants \[
+0<c_-\le c_+<\infty,
+\qquad
+0<\mu_-\le\mu_+<\infty.
+\] Suppose \[
+c_-\log n\le w\le c_+\log n,
+\qquad
+\mu_-n\le M\le\mu_+n.
+\] Choose \(B_1,\ldots,B_M\) independently and uniformly from
+\(\binom{[n]}w\). Then there exists a constant \[
+c_*=c_*(c_-,c_+,\mu_-,\mu_+)>0
+\] such that, with probability \(1-o(1)\) over \(\mathcal B\), every
+exact canonical FBDG encoding into \(w\)-bit cells satisfying \[
+|S_j|\le2\qquad\forall j
+\] has worst-case adaptive query locality \[
+q\ge c_*w.
+\] Thus \[
+\boxed{q=\Omega(w)}.
+\] No linearity assumption is made on the cell functions.
+
+The proof is uniform over \textbf{all} canonical fixed-support
+encodings: the random family is sampled first, and with high probability
+it is hard simultaneously for every possible support system and every
+nonlinear choice of cell contents.
+
+\hypertarget{parameters-and-proof-roadmap}{%
+\subsection{5.1 Parameters and proof
+roadmap}\label{parameters-and-proof-roadmap}}
+
+Set \[
+a:=\frac18.
+\] Choose a sufficiently small constant \(\varepsilon\in(0,1/16)\) such
+that \[
+\Gamma
+:=(1-a)\log\frac1{2\varepsilon}-\log2
+\] satisfies \[
+\Gamma\mu_-c_->3.
+\] Define \[
+\delta:=\frac\varepsilon2,
+\qquad
+\kappa:=\frac\delta4=\frac\varepsilon8,
+\qquad
+r:=\lfloor aw\rfloor.
+\] All logarithms in probability estimates are natural unless a base is
+explicitly written.
+
+The proof first establishes five random-family events uniformly: almost
+all source coordinates are active; every source coordinate has batch
+degree \(O(w)\); every linear-size source set appears substantially in
+many batches; every polylogarithmic source set has bounded repeated
+clustering; and every diffuse fixed support system has some batch
+containing a linear-size disjoint support matching. We then fix an
+arbitrary support system. Either it is diffuse and the matching directly
+forces \(\Omega(w)\) probes, or it has a small hub. The hub case is
+reduced to a short-sketch exact-recovery problem on small residual
+groups.
+
+\hypertarget{deterministic-consequences-of-canonical-fixed-support}{%
+\section{6. Deterministic consequences of canonical fixed
+support}\label{deterministic-consequences-of-canonical-fixed-support}}
+
+\hypertarget{cell-local-dependence}{%
+\subsection{6.1 Cell-local dependence}\label{cell-local-dependence}}
+
+For a cell \(c\) define \[
+N(c):=\{j:c\in S_j\}.
+\]
+
+\textbf{Lemma 6.1 (cell-local dependence).} If \(x,y\in\{0,1\}^n\) agree
+on \(N(c)\), then \[
+E_c(x)=E_c(y).
+\] Hence cell \(c\) is a function only of \(x|_{N(c)}\).
+
+\textbf{Proof.} Transform \(x\) into \(y\) by flipping only coordinates
+outside \(N(c)\). By definition of essential support, none of those
+flips can change cell \(c\). Canonicality identifies every intermediate
+memory state with the encoding of the intermediate logical vector, so
+the content of \(c\) remains unchanged throughout the path. \(\square\)
+
+This is the first point at which fixed support and canonicality become
+essential. With history-dependent memory states or state-dependent
+support locations, the same static dependency set \(N(c)\) need not
+exist.
+
+\hypertarget{active-coordinate-injectivity}{%
+\subsection{6.2 Active-coordinate
+injectivity}\label{active-coordinate-injectivity}}
+
+\textbf{Lemma 6.2.} If two source vectors \(x,y\) differ on some active
+coordinate \(j\in A\), then \[
+E(x)\ne E(y).
+\]
+
+\textbf{Proof.} Some requested batch contains \(j\). If \(E(x)=E(y)\),
+the exact query algorithm would receive identical dynamic memory for
+both states and therefore return the same answer, although the requested
+vectors differ in coordinate \(j\). \(\square\)
+
+\hypertarget{adaptive-hitting}{%
+\subsection{6.3 Adaptive hitting}\label{adaptive-hitting}}
+
+\textbf{Lemma 6.3 (fixed-support adaptive hitting).} Fix \(x\), a
+requested batch \(B\), and let \(P_B(x)\) be the set of cells probed on
+the actual adaptive execution path. Then for every \(j\in B\), \[
+P_B(x)\cap S_j\ne\varnothing.
+\]
+
+\textbf{Proof.} Suppose the path avoids \(S_j\). The encodings \(E(x)\)
+and \(E(x\oplus e_j)\) differ only inside \(S_j\). The first cell read
+on the run from \(x\) therefore has the same value in both states.
+Inductively, after identical transcripts the adaptive decoder chooses
+the same next address; that address lies on the original path, hence
+outside \(S_j\), and again returns the same value. The complete
+transcript and output coincide, contradicting exactness because
+requested bit \(j\) changed. \(\square\)
+
+\textbf{Corollary 6.4.} Every actual probe set is a hitting set for
+\(\{S_j:j\in B\}\). If a batch contains \(r\) coordinates whose supports
+are pairwise disjoint, then \(q\ge r\).
+
+\hypertarget{random-family-events}{%
+\section{7. Random-family events}\label{random-family-events}}
+
+All events in this section hold simultaneously with probability
+\(1-o(1)\).
+
+\hypertarget{almost-all-coordinates-are-active}{%
+\subsection{7.1 Almost all coordinates are
+active}\label{almost-all-coordinates-are-active}}
+
+\textbf{Lemma 7.1.} With high probability, \[
+|[n]\setminus A|\le\frac{\varepsilon n}{4}.
+\]
+
+\textbf{Proof.} For fixed \(j\), \[
+\Pr[j\notin A]
+=
+\left(1-\frac wn\right)^M
+\le
+\exp(-Mw/n)
+\le
+\exp(-\mu_-w)
+\le
+n^{-\mu_-c_-}.
+\] The expected number of inactive coordinates is therefore \(o(n)\).
+Markov's inequality gives the stated linear bound. \(\square\)
+
+\hypertarget{uniform-source-degree-bound}{%
+\subsection{7.2 Uniform source-degree
+bound}\label{uniform-source-degree-bound}}
+
+Let \[
+d_j:=|\{i:j\in B_i\}|.
+\]
+
+\textbf{Lemma 7.2.} There exists a constant \(\Delta=\Delta(c_-,\mu_+)\)
+such that with high probability \[
+d_j\le\Delta w\qquad\forall j\in[n].
+\]
+
+\textbf{Proof.} For fixed \(j\), \(d_j\) is binomial with mean at most
+\(\mu_+w\). A Chernoff bound gives \[
+\Pr[d_j\ge\Delta w]
+\le
+\left(\frac{e\mu_+}{\Delta}\right)^{\Delta w}.
+\] Choose \(\Delta\) large enough that the right side is at most
+\(n^{-3}\) for every \(w\ge c_-\log n\), then union bound over the \(n\)
+coordinates. \(\square\)
+
+\hypertarget{uniform-richness-of-linear-size-sets}{%
+\subsection{7.3 Uniform richness of linear-size
+sets}\label{uniform-richness-of-linear-size-sets}}
+
+\textbf{Lemma 7.3.} With high probability, every \(C\subseteq[n]\) with
+\(|C|\ge\delta n\) has at least \(M/2\) batches satisfying \[
+|B_i\cap C|\ge\frac{\delta w}{2}.
+\]
+
+\textbf{Proof.} Fix \(C\). For one batch, \(X=|B_i\cap C|\) is
+hypergeometric with mean at least \(\delta w\). The usual hypergeometric
+lower-tail Chernoff inequality gives \[
+\Pr[X<\delta w/2]\le e^{-\delta w/8}=:p.
+\] The \(M\) batches are independent. The probability that at least
+\(M/2\) batches are bad is at most \[
+2^M p^{M/2}
+\le
+\exp\left(M\log2-\frac{\delta Mw}{16}\right)
+=
+\exp(-\Omega(nw)).
+\] There are at most \(2^n\) choices of \(C\), and \(w=\Theta(\log n)\),
+so a union bound remains \(o(1)\). \(\square\)
+
+\hypertarget{uniform-spreading-on-polylogarithmic-sets}{%
+\subsection{7.4 Uniform spreading on polylogarithmic
+sets}\label{uniform-spreading-on-polylogarithmic-sets}}
+
+Define \[
+D_0:=(2aw+1)w=O(w^2).
+\] For \(S\subseteq[n]\), let \[
+Z(S):=\sum_{i=1}^M(|B_i\cap S|-1)_+.
+\] This quantity counts repeat incidences beyond the first hit of \(S\)
+in each batch.
+
+\textbf{Lemma 7.4 (uniform spreading).} There is a constant \(K\ge3\)
+such that with high probability, simultaneously for every \(S\) with
+\(1\le|S|\le D_0\), \[
+\boxed{Z(S)\le K|S|.}
+\]
+
+\textbf{Proof.} Fix \(S\) of size \(s\le D_0\) and put
+\(t=\lceil Ks\rceil\). If \(Z(S)\ge t\), then for some \(1\le r'\le t\)
+there are distinct batches \(i_1,\ldots,i_{r'}\) and positive integers
+\(t_1,\ldots,t_{r'}\) summing to \(t\) such that \[
+|B_{i_\ell}\cap S|\ge t_\ell+1
+\qquad(\ell=1,\ldots,r').
+\] For any specified \(k\)-subset \(T\subseteq S\), \[
+\Pr[T\subseteq B_i]
+=
+\frac{(w)_k}{(n)_k}
+\le
+\left(\frac wn\right)^k.
+\] For fixed \(r'\) and composition \((t_1,\ldots,t_{r'})\), a union
+bound over selected batches and selected source subsets therefore gives
+at most \[
+\binom Mr'
+\prod_{\ell=1}^{r'}
+\binom{s}{t_\ell+1}
+\left(\frac wn\right)^{t_\ell+1}.
+\] Using \(\binom{s}{k}\le s^k\) and summing over the at most
+\(2^{t-1}\) compositions of \(t\), \[
+\Pr[Z(S)\ge t]
+\le
+2^t\sum_{r'=1}^t
+M^{r'}
+\left(\frac{sw}{n}\right)^{t+r'}.
+\] Since \(M\le\mu_+n\) and \(r'\le t\), \[
+M^{r'}\left(\frac{sw}{n}\right)^{t+r'}
+=
+\left(\frac{sw}{n}\right)^t(\mu_+sw)^{r'}
+\le
+\left(\frac{C s^2w^2}{n}\right)^t
+\] for a constant \(C\) after absorbing the sum over \(r'\). Thus \[
+\Pr[Z(S)\ge Ks]
+\le
+\left(\frac{C' s^2w^2}{n}\right)^{Ks}.
+\] Because \(s\le D_0=O(w^2)\), the base is at most \(C''w^6/n\). Union
+bounding over the at most \((en/s)^s\) sets of size \(s\) gives \[
+\Pr[\exists S,|S|=s:Z(S)>Ks]
+\le
+\left[
+\frac{en}{s}
+\left(\frac{C''w^6}{n}\right)^K
+\right]^s.
+\] For any fixed \(K\ge3\), the bracket is
+\(n^{1-K}\operatorname{polylog}(n)=o(1)\). Summing over
+\(1\le s\le D_0=O(\log^2n)\) proves the lemma. \(\square\)
+
+\hypertarget{a-uniform-matching-event-for-every-diffuse-support-system}{%
+\subsection{7.5 A uniform matching event for every diffuse support
+system}\label{a-uniform-matching-event-for-every-diffuse-support-system}}
+
+Call a support system \textbf{diffuse} if every cell set \(T\) with \[
+|T|\le2r
+\] is incident to at most \(\varepsilon n\) source coordinates: \[
+|\{j:S_j\cap T\ne\varnothing\}|\le\varepsilon n.
+\]
+
+\textbf{Lemma 7.5 (uniform diffuse matching).} With high probability
+over \(\mathcal B\), every diffuse fixed support system contains some
+requested batch with \(r=\lfloor aw\rfloor\) pairwise disjoint supports.
+
+\textbf{Proof.} First count relevant support systems. The union of all
+essential supports contains at most \(2n\) cells. A cell belonging to no
+support is constant over the Boolean cube by Lemma 6.1 and can be
+compiled into the query algorithm. Relabel the at-most-\(2n\) support
+cells by \([2n]\). Each source coordinate chooses a subset of size
+\(0\), \(1\), or \(2\), so the number of labeled support systems is at
+most \[
+\left(1+2n+\binom{2n}{2}\right)^n
+\le
+(3n^2)^n
+=
+\exp(2n\log n+O(n)).
+\]
+
+Fix one diffuse support system. Expose one random batch as an ordered
+sample of \(w\) distinct source coordinates. Greedily accept a
+coordinate if its support is disjoint from all supports previously
+accepted. Before \(r\) acceptances, the union \(T\) of accepted supports
+has size at most \(2r\), so at most \(\varepsilon n\) source coordinates
+conflict with \(T\). Conditional on the past, the next sampled
+coordinate is therefore rejected with probability at most \[
+\frac{\varepsilon n}{n-w}\le2\varepsilon
+\] for sufficiently large \(n\).
+
+If fewer than \(r\) coordinates are accepted, at least
+\(w-r+1\ge(1-a)w\) draws were rejected. Union bounding over
+rejection-position sets gives \[
+\Pr[\text{matching size}<r]
+\le
+2^w(2\varepsilon)^{(1-a)w}
+=
+e^{-\Gamma w}.
+\] All \(M\) batches fail with probability at most \[
+e^{-\Gamma Mw}
+\le
+\exp(-\Gamma\mu_-c_-n\log n).
+\] Finally, union bound over every labeled support system. The total
+failure probability is at most \[
+\exp\left((2-\Gamma\mu_-c_-+o(1))n\log n\right)=o(1)
+\] by the choice \(\Gamma\mu_-c_->3\). \(\square\)
+
+\hypertarget{an-adaptive-sketch-probe-lemma}{%
+\section{8. An adaptive sketch-probe
+lemma}\label{an-adaptive-sketch-probe-lemma}}
+
+The hub case can be closed with a short self-contained counting lemma.
+It is a specialized exact-product analogue of the broader
+Query-with-Sketch methodology of Garg et al.
+(\protect\hyperlink{ref-garg2026qws}{Garg et al. 2026}).
+
+\textbf{Lemma 8.1 (independent-target sketch-probe bound).} Let \[
+X=(X_1,\ldots,X_N)
+\] be independent group-valued random variables. Let \[
+F(X)=(Y_1,\ldots,Y_m)\in\{0,1\}^m,
+\] where the \(Y_\ell\) are independent unbiased bits and each target
+bit belongs to a distinct input group. Consider any deterministic
+algorithm that
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  receives an arbitrary \(s\)-bit sketch \(S(X)\);
+\item
+  adaptively probes whole input groups \(X_i\);
+\item
+  computes \(F(X)\) exactly.
+\end{enumerate}
+
+For every integer \(c\ge1\), if \(m>s+c\), its average number \(D\) of
+group probes satisfies \[
+\boxed{
+\mathbb E[D]
+\ge
+(1-2^{-c})(m-s-c).
+}
+\] In particular, \[
+\mathbb E[D]\ge\frac34(m-s-2)
+\] for \(c=2\).
+
+\textbf{Proof.} For each sketch value \(z\in\{0,1\}^s\), fix the
+adaptive decision tree used when the sketch equals \(z\). Put \[
+t:=m-s-c.
+\] Consider a leaf reached after at most \(t\) group probes, with probe
+transcript \(\sigma\) and output \(y\in\{0,1\}^m\). At most \(t\) target
+groups have been revealed, so conditioned only on \(\sigma\), at least
+\[
+m-t=s+c
+\] target bits remain independent and unbiased. Therefore \[
+\Pr[F(X)=y\mid\sigma]\le2^{-(s+c)}.
+\] For a fixed sketch tree, the cylinder events \(\sigma\) associated
+with distinct leaves are disjoint. Hence the total probability mass of
+inputs that both reach that tree, halt within \(t\) probes, and are
+correct is at most \(2^{-(s+c)}\). Summing over the at most \(2^s\)
+sketch values gives \[
+\Pr[\text{correct and }D\le t]\le2^{-c}.
+\] The algorithm is exact, so \[
+\Pr[D>t]\ge1-2^{-c}.
+\] Consequently \[
+\mathbb E[D]
+\ge
+t\Pr[D>t]
+\ge
+(1-2^{-c})(m-s-c).
+\] \(\square\)
+
+Two details are worth emphasizing. First, adaptivity is fully allowed:
+each sketch value defines an arbitrary decision tree. Second, the proof
+never conditions on the sketch value when claiming residual entropy;
+that would be invalid for a maliciously informative sketch. Instead, the
+\(2^s\) possible sketch values are paid for by the final union bound.
+
+\hypertarget{proof-of-the-main-theorem}{%
+\section{9. Proof of the main theorem}\label{proof-of-the-main-theorem}}
+
+Assume the random family simultaneously satisfies Lemmas 7.1--7.5. Fix
+an arbitrary canonical fixed-support encoding with \(|S_j|\le2\). We
+split into two cases.
+
+\hypertarget{diffuse-case}{%
+\subsection{9.1 Diffuse case}\label{diffuse-case}}
+
+Suppose the support system is diffuse. By Lemma 7.5, some requested
+batch contains \[
+r=\lfloor aw\rfloor
+\] pairwise disjoint supports. By Lemma 6.3, the actual adaptive query
+path must hit every one of those supports. A single probed cell can hit
+at most one support in a pairwise disjoint family. Therefore \[
+q\ge r\ge\frac a2w
+\] for all sufficiently large \(n\).
+
+\hypertarget{hub-concentrated-case}{%
+\subsection{9.2 Hub-concentrated case}\label{hub-concentrated-case}}
+
+Otherwise there is a cell set \[
+H\subseteq\mathcal C,
+\qquad
+h:=|H|\le2r\le2aw,
+\] incident to more than \(\varepsilon n\) source coordinates.
+
+\hypertarget{coordinates-internal-to-the-hub}{%
+\subsubsection{Coordinates internal to the
+hub}\label{coordinates-internal-to-the-hub}}
+
+Let \[
+I_H:=\{j\in A:S_j\subseteq H\}.
+\]
+
+\textbf{Lemma 9.1.} \[
+|I_H|\le hw.
+\]
+
+\textbf{Proof.} Fix all logical coordinates outside \(I_H\) and vary the
+bits in \(I_H\). By Lemma 6.1, only cells in \(H\) can change. By
+active-coordinate injectivity, all \(2^{|I_H|}\) assignments to \(I_H\)
+must yield distinct hub contents. The hub contains only \(hw\) bits, so
+\[
+2^{|I_H|}\le2^{hw}.
+\] \(\square\)
+
+Since \(h=O(w)\) and \(w=\Theta(\log n)\), \[
+hw=O(w^2)=o(n).
+\] Lemma 7.1 leaves at most \(\varepsilon n/4\) inactive coordinates.
+Therefore, for large \(n\), at least \[
+\varepsilon n-\frac{\varepsilon n}{4}-hw
+\ge
+\frac{\varepsilon n}{2}
+=
+\delta n
+\] active coordinates incident to \(H\) have an essential support with
+exactly one endpoint in \(H\) and one outside. Let \(C\) denote this
+crossing set.
+
+\hypertarget{residual-source-groups}{%
+\subsubsection{Residual source groups}\label{residual-source-groups}}
+
+For every nonhub cell \(v\notin H\), define \[
+G_v:=\{j\in C:v\in S_j\}.
+\] The nonempty groups \(G_v\) partition \(C\).
+
+\textbf{Lemma 9.2.} For every \(v\notin H\), \[
+|G_v|\le(h+1)w\le D_0.
+\]
+
+\textbf{Proof.} Fix all source coordinates outside \(G_v\). By
+fixed-support locality, varying \(G_v\) can affect only the hub cells
+and cell \(v\). Active-coordinate injectivity therefore embeds
+\(2^{|G_v|}\) distinct assignments into at most \((h+1)w\) bits: \[
+2^{|G_v|}\le2^{(h+1)w}.
+\] The second inequality follows from \(h\le2aw\). \(\square\)
+
+\hypertarget{many-batches-touch-many-residual-groups}{%
+\subsubsection{Many batches touch many residual
+groups}\label{many-batches-touch-many-residual-groups}}
+
+For a batch \(B_i\), let \[
+r_i:=|B_i\cap C|
+\] and define its residual collision excess \[
+e_i:=\sum_v(|B_i\cap G_v|-1)_+.
+\] The number \(g_i\) of distinct residual groups touched by \(B_i\)
+satisfies \[
+g_i=r_i-e_i.
+\]
+
+By Lemma 7.3, at least \(M/2\) batches have \[
+r_i\ge\frac{\delta w}{2}.
+\] By Lemma 7.4 applied to every \(G_v\) and the fact that the groups
+partition \(C\), \[
+\sum_i e_i
+=
+\sum_v Z(G_v)
+\le
+K\sum_v|G_v|
+=
+K|C|
+\le Kn.
+\] Thus only \[
+\frac{4Kn}{\delta w}=o(n)
+\] batches can have \(e_i>\delta w/4\). Since \(M=\Theta(n)\), a
+constant fraction of all batches satisfy both inequalities, and every
+such batch touches at least \[
+\frac{\delta w}{4}
+=
+\kappa w
+\] distinct residual groups.
+
+\hypertarget{selecting-group-disjoint-batches}{%
+\subsubsection{Selecting group-disjoint
+batches}\label{selecting-group-disjoint-batches}}
+
+By Lemma 7.2 and Lemma 9.2, any fixed group \(G_v\) is touched by at
+most \[
+\sum_{j\in G_v}d_j
+\le
+\Delta w|G_v|
+\le
+\Delta(h+1)w^2
+\] batches. A candidate batch touches at most \(w\) residual groups, so
+selecting one candidate can conflict with at most \[
+\Delta(h+1)w^3
+\] other candidates.
+
+Set \[
+L:=\left\lceil\frac{4h}{\kappa}\right\rceil.
+\] Since \(h=O(w)\), \[
+L\,\Delta(h+1)w^3=O(w^5)=o(n).
+\] The candidate pool has \(\Theta(n)\) batches. A greedy procedure
+therefore selects \(L\) candidate batches whose touched residual-group
+sets are pairwise disjoint.
+
+Each selected batch touches at least \(\kappa w\) groups. Choose one
+requested source bit from each touched group. Across all selected
+batches this gives \[
+m\ge\kappa Lw
+\] target bits, each in a different residual group.
+
+\hypertarget{reducing-the-hub-case-to-sketch-probe-recovery}{%
+\subsubsection{Reducing the hub case to sketch-probe
+recovery}\label{reducing-the-hub-case-to-sketch-probe-recovery}}
+
+Consider the product distribution in which all coordinates outside \(C\)
+are fixed to zero and all bits in \(C\) are independent unbiased bits.
+For every residual group define the raw group variable \[
+X_v:=x|_{G_v}.
+\] The \(X_v\) are independent.
+
+Give the decoder the complete contents of all \(h\) hub cells for free.
+This is an arbitrary sketch of length \[
+s:=hw.
+\] Whenever an original FBDG query probes a nonhub cell \(v\) with
+\(G_v\ne\varnothing\), reveal the complete raw group \(X_v\). By Lemma
+6.1 and because every source bit outside \(C\) is fixed, the encoded
+cell \(E_v(x)\) is a deterministic function of \(X_v\) and fixed
+constants, so one raw-group probe can simulate the original cell probe.
+If \(G_v=\varnothing\), the cell is constant under the hard distribution
+and may be answered for free. Hub probes are answered from the sketch.
+
+Run the \(L\) selected FBDG queries, caching any raw group once
+revealed. The resulting exact sketch-probe algorithm recovers the \(m\)
+selected target bits using at most \[
+Lq
+\] raw-group probes. The targets are independent unbiased bits and
+occupy distinct groups, so Lemma 8.1 with \(c=2\) gives \[
+Lq
+\ge
+\frac34(m-s-2).
+\] Now \[
+m\ge\kappa Lw
+\] and, by the choice of \(L\), \[
+\frac{s}{L}
+=
+\frac{hw}{L}
+\le
+\frac{\kappa w}{4}.
+\] Therefore \[
+q
+\ge
+\frac34\left(\kappa w-\frac{hw}{L}-\frac2L\right)
+\ge
+\frac{9\kappa}{16}w-o(1).
+\] For sufficiently large \(n\) this is at least \(\kappa w/2\).
+Combining the diffuse and hub cases proves Theorem 5.1 with, for
+example, \[
+c_*:=\min\left\{\frac a2,\frac\kappa2\right\}>0.
+\] \(\square\)
+
+\hypertarget{why-fixed-support-is-the-exact-proof-boundary}{%
+\section{10. Why fixed support is the exact proof
+boundary}\label{why-fixed-support-is-the-exact-proof-boundary}}
+
+The main theorem is sometimes easy to overread as a general dynamic
+lower bound. It is not. Fixed support is used in four logically distinct
+places.
+
+First, Lemma 6.1 requires a static set \(N(c)\) of source coordinates
+that can ever affect cell \(c\). Second, the diffuse branch requires one
+static support system over which a random-family matching event can be
+union-bounded. Third, the hub branch needs a permanent set \(H\) and a
+permanent partition into residual groups \(G_v\). Fourth, simulation of
+a nonhub encoded cell by one raw residual group relies on the statement
+that no source coordinate outside \(G_v\) can alter that cell under the
+hard distribution.
+
+All four can fail when update locations move. Even a tiny canonical
+example can exhibit support motion. Suppose two logical bits \(x_1,x_2\)
+are stored in two 2-bit cells \(A,B\) so that \[
+\begin{array}{ll}
+x_2=0:& A=(x_1,0),\quad B=(0,0),\\
+x_2=1:& A=(0,0),\quad B=(x_1,1).
+\end{array}
+\] Flipping \(x_1\) changes \(A\) when \(x_2=0\) and \(B\) when
+\(x_2=1\); flipping \(x_2\) changes at most the two cells. Thus
+\(u\le2\), yet \(x_1\) has no single fixed physical support across all
+states.
+
+This example does not beat any lower bound; it only demonstrates that
+static residual-group geometry cannot be assumed in the moving-support
+model. The congestion theorem of Section 4 is therefore important: it
+remains valid without fixed support and proves that any \(q=o(w)\)
+moving-support construction for a random family must replace static
+geometry by continually moving high-influence hubs.
+
+\hypertarget{related-work}{%
+\section{11. Related work}\label{related-work}}
+
+\hypertarget{batch-and-combinatorial-batch-codes}{%
+\subsection{11.1 Batch and combinatorial batch
+codes}\label{batch-and-combinatorial-batch-codes}}
+
+Batch codes were introduced by Ishai, Kushilevitz, Ostrovsky, and Sahai
+to support simultaneous retrieval with bounded access to each bucket
+(\protect\hyperlink{ref-ishai2004batch}{Ishai et al. 2004}).
+Combinatorial batch codes restrict storage to replication and lead
+naturally to incidence and Hall-type formulations
+(\protect\hyperlink{ref-paterson2009cbc}{Paterson, Stinson, and Wei
+2009}). Graph-based constructions, including dense high-girth graphs,
+provide an extensive structural language for low-replication batch
+retrieval (\protect\hyperlink{ref-rawat2016batchgraphs}{Rawat et al.
+2016}). Restricted reconstruction/query size has also been studied
+directly in batch-code models
+(\protect\hyperlink{ref-zhang2015restricted}{H. Zhang and Skachek 2015};
+\protect\hyperlink{ref-thomas2017restricted}{Thomas and Skachek 2017}),
+while later work strengthened redundancy lower bounds for linear batch
+codes (\protect\hyperlink{ref-li2021improved}{Li and Wootters 2021}). In
+a two-replication combinatorial batch code, an item is naturally
+represented by an edge joining its two storage locations, which is
+closely related to our support-system picture.
+
+The objective is different here. FBDG fixes a particular query family in
+advance, allows arbitrary nonlinear encoded cell contents, and couples
+retrieval to dynamic point updates. The lower bound is not a
+storage-rate bound and does not require disjoint recovery sets for
+simultaneous requests. We therefore treat the support graph as
+established surrounding machinery rather than a novelty claim.
+
+\hypertarget{functional-batch-codes-and-small-recovery-sets}{%
+\subsection{11.2 Functional batch codes and small recovery
+sets}\label{functional-batch-codes-and-small-recovery-sets}}
+
+Functional PIR and batch codes allow queries for linear combinations of
+information symbols and study the number of servers needed for multiple
+disjoint recovery sets (\protect\hyperlink{ref-zhang2020functional}{Y.
+Zhang, Etzion, and Yaakobi 2020}). Recent work explicitly studies
+functional batch codes in which each query must be answered from a small
+number of coded symbols
+(\protect\hyperlink{ref-oksner2026functional}{Oksner et al. 2026}), and
+all-symbol PIR/batch variants continue to refine recovery structure
+(\protect\hyperlink{ref-boruchovsky2026allsymbol}{Boruchovsky et al.
+2026}). These works are especially relevant to the positive side of our
+paper because they show that algebraic structure can make many
+prescribed recoveries local.
+
+The main lower bound here differs in three dimensions: the requested
+objects are exact source-coordinate batches from one fixed random
+family; the representation evolves under point updates with a hard cap
+on write locations; and the encoding may be nonlinear. We did not find a
+theorem in this literature with the same random-family, two-fixed-write,
+nonlinear adaptive-recovery statement.
+
+\hypertarget{local-update-and-local-decode}{%
+\subsection{11.3 Local update and local
+decode}\label{local-update-and-local-decode}}
+
+Update efficiency in coding theory predates the specific
+locally-updatable/locally-decodable formulations: Mazumdar, Chandar, and
+Wornell study how many encoded symbols must change after a single
+information-symbol update in capacity-approaching codes
+(\protect\hyperlink{ref-mazumdar2013update}{Mazumdar, Chandar, and
+Wornell 2013}). Chandran, Kanukurthi, and Ostrovsky introduced locally
+updatable and locally decodable codes, showing explicitly that low write
+and read locality can coexist under suitable coding metrics
+(\protect\hyperlink{ref-chandran2014luldc}{Chandran, Kanukurthi, and
+Ostrovsky 2014}). Vatedka and Tchamkerten studied compression with local
+decoding and local update, including constant average locality
+(\protect\hyperlink{ref-vatedka2020bigdata}{Vatedka and Tchamkerten
+2020}). Vatedka, Chandar, and Tchamkerten obtained \(O(\log\log n)\)
+worst-case local decoding and update efficiency together with converse
+results under stated assumptions
+(\protect\hyperlink{ref-vatedka2020worstcase}{Vatedka, Chandar, and
+Tchamkerten 2020}). These results make clear that simultaneous
+read/write locality is an established research direction.
+
+FBDG removes noise tolerance and compression objectives and instead asks
+for exact recovery of one member of a fixed multi-coordinate query
+family. That specialization exposes an incidence parameter absent from
+single-coordinate local decoding: the same two-write representation may
+be constant-query for one family and linear-query for another.
+
+\hypertarget{arbitrary-access-sets}{%
+\subsection{11.4 Arbitrary access sets}\label{arbitrary-access-sets}}
+
+Maturana and Rashmi study array codes tailored to prescribed
+storage-node access sets, with explicit attention to update cost and
+storage overhead (\protect\hyperlink{ref-maturana2021arbitrary}{Maturana
+and Rashmi 2021}). This is close in spirit to the thesis that workload
+structure matters. Their access sets specify subsets of storage nodes
+sufficient to reconstruct a message, whereas FBDG batches specify
+subsets of source coordinates that must be recovered from encoded
+dynamic memory. The orientations are different, but the comparison
+reinforces why the Fano/finite-geometry side of our paper should be
+viewed as part of an existing coding neighborhood rather than as a
+standalone coding novelty.
+
+\hypertarget{query-with-sketch}{%
+\subsection{11.5 Query-with-Sketch}\label{query-with-sketch}}
+
+Garg, He, Li, Papakonstantinou, and Yang develop the Query-with-Sketch
+model for systematic data-structure lower bounds, allowing an arbitrary
+short sketch followed by adaptive probes and using conditional
+min-entropy to lift no-sketch lower bounds
+(\protect\hyperlink{ref-garg2026qws}{Garg et al. 2026}). The hub case in
+our proof has the same high-level architecture: hub cells become a
+sketch and residual encoded cells are strengthened to raw source-group
+probes. Because our hard distribution is a direct product and the target
+bits lie in distinct groups, the specialized Lemma 8.1 gives a shorter
+self-contained argument. We make no claim that sketch-aided
+decision-tree counting is new in itself.
+
+\hypertarget{novelty-boundary-after-the-october-2026-search}{%
+\subsection{11.6 Novelty boundary after the October 2026
+search}\label{novelty-boundary-after-the-october-2026-search}}
+
+The literature search for this manuscript included batch codes, graph
+batch codes, functional batch/PIR codes, arbitrary-access-set codes,
+locally updatable/locally decodable codes, local decode/update
+compression, adaptive sketch-probe lower bounds, write locality, and
+dynamic cell-probe lower bounds. Recent 2026 work on functional batch
+codes with small recovery sets was included explicitly
+(\protect\hyperlink{ref-oksner2026functional}{Oksner et al. 2026}). No
+materially equivalent statement to Theorem 5.1 was found in that search.
+
+This is evidence for bounded distinctness, not a proof of global
+priority. Accordingly, the manuscript avoids the words ``first,''
+``optimal,'' and ``state of the art'' as absolute claims.
+
+\hypertarget{discussion}{%
+\section{12. Discussion}\label{discussion}}
+
+\hypertarget{what-the-separation-says}{%
+\subsection{12.1 What the separation
+says}\label{what-the-separation-says}}
+
+The positive and negative results share the same asymptotic batch size
+and the same write-locality budget. What changes is the incidence
+structure of the requested family. The structured construction
+deliberately aligns many requested triples with a small algebraic set of
+two-word decoders. Random families destroy this alignment in two
+complementary ways. If supports remain spread out, random batches expose
+many disjoint dependencies. If supports concentrate, random batches
+spread requested coordinates across many residual source groups after
+the concentrated cells are removed.
+
+This provides a sharper explanation than the slogan ``random queries are
+hard.'' The actual obstruction is that a two-write canonical encoding
+has only two ways to make many coordinates jointly accessible: reuse the
+same cells heavily or keep their supports dispersed. The proof attacks
+those two possibilities separately.
+
+\hypertarget{why-nonlinearity-does-not-rescue-fixed-supports}{%
+\subsection{12.2 Why nonlinearity does not rescue fixed
+supports}\label{why-nonlinearity-does-not-rescue-fixed-supports}}
+
+The lower bound never linearizes the cell contents. In the diffuse
+branch only the locations of essential dependencies matter. In the hub
+branch the capacity arguments use injectivity and bit counts, while the
+final simulation reveals complete raw residual groups, which is strictly
+more information than the original nonlinear encoded cell. Thus
+arbitrary nonlinear preprocessing inside each fixed support cell does
+not bypass the argument.
+
+This is important because linear sparse-factorization lower bounds alone
+cannot establish the theorem: the structured Fano gadget itself is
+linear, but the hard-family theorem must exclude nonlinear alternatives
+as well.
+
+\hypertarget{why-adaptivity-does-not-rescue-fixed-supports}{%
+\subsection{12.3 Why adaptivity does not rescue fixed
+supports}\label{why-adaptivity-does-not-rescue-fixed-supports}}
+
+Adaptivity is handled twice. The hitting lemma follows the actual
+decision path and shows that avoiding a changed support yields the same
+transcript after a source-bit flip. The sketch-probe lemma treats each
+sketch value as an arbitrary adaptive decision tree. No step replaces
+the adaptive decoder by a fixed nonadaptive probe set.
+
+\hypertarget{toward-deterministic-hard-families}{%
+\subsection{12.4 Toward deterministic hard
+families}\label{toward-deterministic-hard-families}}
+
+Randomness is used only to guarantee a small list of combinatorial
+properties: almost-full activity, bounded coordinate degree, richness of
+every linear-size subset, spreading on polylogarithmic subsets, and a
+uniform diffuse matching event. This suggests a derandomization program.
+An explicit family satisfying deterministic analogues of these
+properties would turn Theorem 5.1 into an explicit hard-family result.
+
+The most demanding requirement is the uniform diffuse matching property,
+because it must hold against every possible two-support system after the
+family is fixed. Expander- or extractor-like incidence constructions are
+natural candidates, but the required quantifier structure is stronger
+than ordinary pairwise expansion.
+
+\hypertarget{limitations-and-open-problems}{%
+\section{13. Limitations and open
+problems}\label{limitations-and-open-problems}}
+
+The main theorem has deliberately narrow scope.
+
+\textbf{Moving support.} The result does not cover state-dependent or
+history-dependent update locations. Section 4 shows that any
+sublinear-query escape must maintain high-congestion hubs, but it does
+not rule out moving hubs.
+
+\textbf{Canonicality.} The fixed-support theorem assumes the memory
+representation is a function of the current source state. Canonicality
+is used in the cell-local dependence lemma. The state-local congestion
+theorem does not need this global assumption, but the \(\Omega(w)\)
+fixed-support proof does.
+
+\textbf{Word-operation time.} The paper is a locality/cell-probe result.
+The structured construction guarantees two cell reads, not a universal
+constant instruction count for assembling every packed output under
+every standard word-RAM instruction set.
+
+\textbf{Random rather than explicit hard family.} The hard family is
+sampled randomly. Producing a deterministic explicit family with the
+same universal hardness property is open.
+
+\textbf{Constant optimization.} The proof intentionally uses wasteful
+constants. The scientific statement is asymptotic \(\Omega(w)\);
+improving \(c_*\) is not pursued.
+
+These limitations lead to several concrete questions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Can one prove \(q=\Omega(w)\) for random \(w\)-uniform families with
+  \(u=2\) when write locations may move with the state or history?
+\item
+  Does an analogous fixed-support theorem hold for every constant
+  \(u>2\)?
+\item
+  What deterministic incidence parameter exactly separates families
+  admitting \(q=O(1)\) from families forcing \(q=\Omega(w)\)?
+\item
+  Can the random-family events in Section 7 be realized by an explicit
+  efficiently constructible family?
+\item
+  Can one characterize the additional power of noncanonical
+  history-dependent representations separately from state-dependent
+  physical support motion?
+\end{enumerate}
+
+\hypertarget{conclusion}{%
+\section{14. Conclusion}\label{conclusion}}
+
+Fixed-batch dynamic retrieval exhibits a genuine
+structure-versus-randomness locality separation. Two fixed writes per
+source coordinate are sufficient for two-probe exact recovery on
+explicit highly structured families with logarithmic batch size. The
+same write budget is insufficient for random logarithmic-size batch
+families: with high probability every exact canonical representation,
+even with arbitrary nonlinear cells and fully adaptive queries, requires
+a linear number of word probes.
+
+The proof identifies the mechanism behind the separation. A fixed
+support system is either diffuse, in which case a random request exposes
+many disjoint dependencies, or hub-concentrated, in which case the hub
+supplies only a short global sketch and the remaining information is
+dispersed across small residual groups. Random incidence defeats both
+geometries.
+
+The remaining frontier is correspondingly precise. To beat the
+random-family barrier with two writes, an unrestricted representation
+must exploit support motion strongly enough to maintain high-influence
+hubs while changing which physical cells play that role across states.
+Whether such moving geometry can actually yield \(q=o(w)\) is the
+central open problem.
+
+\hypertarget{appendix-a.-decoder-classes-for-the-fano-gadget}{%
+\section{Appendix A. Decoder classes for the Fano
+gadget}\label{appendix-a.-decoder-classes-for-the-fano-gadget}}
+
+The three cell pairs can decode the following four Fano lines each: \[
+\begin{aligned}
+\mathcal L_{01}&=\{123,167,257,356\},\\
+\mathcal L_{02}&=\{145,167,347,356\},\\
+\mathcal L_{12}&=\{246,257,347,356\}.
+\end{aligned}
+\] These sets follow from which unique \(U_i\) bit is unavailable from a
+given cell pair. For example, \((C_0,C_1)\) directly reveals all source
+bits except \(U_2\), so every Fano line avoiding point \(4=U_2\) is
+decodable from that pair.
+
+The \(t\)-fold construction uses three fixed all-copy patterns to
+activate all source coordinates and fills the remaining query slots with
+distinct sequences from \(\mathcal L_{01}^t\). Because \(4^t\ge7t-3\),
+the construction has at least the required number of distinct patterns
+for every \(t\ge1\).
+
+\hypertarget{appendix-b.-theorem-dependency-graph}{%
+\section{Appendix B. Theorem-dependency
+graph}\label{appendix-b.-theorem-dependency-graph}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Main random{-}family theorem}
+\NormalTok{|}
+\NormalTok{+{-}{-} canonical fixed{-}support model}
+\NormalTok{|   +{-}{-} cell{-}local dependence}
+\NormalTok{|   +{-}{-} active{-}coordinate injectivity}
+\NormalTok{|   +{-}{-} adaptive hitting}
+\NormalTok{|}
+\NormalTok{+{-}{-} random{-}family events}
+\NormalTok{|   +{-}{-} almost all coordinates active}
+\NormalTok{|   +{-}{-} maximum source degree O(w)}
+\NormalTok{|   +{-}{-} uniform richness of linear{-}size sets}
+\NormalTok{|   +{-}{-} uniform spreading on O(w\^{}2){-}size sets}
+\NormalTok{|   +{-}{-} uniform diffuse matching over every fixed support system}
+\NormalTok{|}
+\NormalTok{+{-}{-} diffuse/hub dichotomy}
+\NormalTok{    |}
+\NormalTok{    +{-}{-} diffuse}
+\NormalTok{    |   +{-}{-} random batch contains Omega(w) disjoint supports}
+\NormalTok{    |   +{-}{-} adaptive hitting}
+\NormalTok{    |   +{-}{-} q = Omega(w)}
+\NormalTok{    |}
+\NormalTok{    +{-}{-} hub}
+\NormalTok{        +{-}{-} hub{-}internal active coordinates \textless{}= h w}
+\NormalTok{        +{-}{-} Omega(n) active crossing coordinates}
+\NormalTok{        +{-}{-} residual groups of size \textless{}= (h+1) w}
+\NormalTok{        +{-}{-} many batches touch kappa w distinct groups}
+\NormalTok{        +{-}{-} bounded source degree =\textgreater{} L=Theta(h) group{-}disjoint batches}
+\NormalTok{        +{-}{-} hub cells form an h w{-}bit sketch}
+\NormalTok{        +{-}{-} nonhub cell probe \textless{}= one raw residual{-}group probe}
+\NormalTok{        +{-}{-} independent{-}target sketch{-}probe lemma}
+\NormalTok{        +{-}{-} L q \textgreater{}= Omega(L w)}
+\NormalTok{        +{-}{-} q = Omega(w)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{appendix-c.-reproducibility-and-validation-notes}{%
+\section{Appendix C. Reproducibility and validation
+notes}\label{appendix-c.-reproducibility-and-validation-notes}}
+
+The general lower bounds are mathematical proofs, not empirical claims.
+The reproducibility artifact accompanying this manuscript therefore
+focuses on finite validation of the structured construction and on
+preserving the exact proof state.
+
+The script \texttt{fbdg\_structured\_validate.py} performs the following
+checks:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Exhaustive validation of the fixed decoder assignment for the seven
+  Fano queries over all \(2^7\) states: \(896/896\) state/query cases
+  pass.
+\item
+  Exhaustive validation of every valid cell-pair/line decoder relation
+  over all \(2^7\) states: \(1536/1536\) cases pass.
+\item
+  Construction of \(7t\) distinct all-active global batches for
+  \(t\in\{1,2,3,4,5,8\}\).
+\item
+  Random differential checks of every constructed global query against
+  raw source bits for each tested \(t\).
+\end{enumerate}
+
+Observed query-check counts in the retained run were:
+
+\begin{longtable}[]{@{}rrrr@{}}
+\toprule\noalign{}
+\(t\) & batches & active source bits & randomized state/query checks \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 7 & 7 & 7,000 \\
+2 & 14 & 14 & 14,000 \\
+3 & 21 & 21 & 21,000 \\
+4 & 28 & 28 & 28,000 \\
+5 & 35 & 35 & 7,000 \\
+8 & 56 & 56 & 11,200 \\
+\end{longtable}
+
+These executions validate the finite implementation of the positive
+construction; they are not used as evidence for the asymptotic lower
+bound.
+
+\hypertarget{appendix-d.-proof-repair-ledger}{%
+\section{Appendix D. Proof-repair
+ledger}\label{appendix-d.-proof-repair-ledger}}
+
+The final proof incorporates several defects found during adversarial
+auditing of earlier proof sketches.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Spreading alone does not imply group-disjoint queries.} Two
+  batches may touch the same residual group once each while contributing
+  zero collision excess. The final proof adds the uniform source-degree
+  bound and a greedy conflict argument.
+\item
+  \textbf{The number of aggregated batches needs an explicit constant.}
+  A statement of the form \(L=\Theta(h)\) is insufficient because the
+  hub sketch can encode the entire target if the hidden constant is too
+  small. The final proof sets \(L=\lceil4h/\kappa\rceil\).
+\item
+  \textbf{Inactive coordinates cannot be counted by injectivity.} A
+  source bit never appearing in a query need not be represented. The
+  proof first shows that only \(o(n)\) random-family coordinates are
+  inactive and applies information-capacity arguments only to active
+  coordinates.
+\item
+  \textbf{Dummy support locations are excluded.} Essential supports are
+  defined by actual state dependence.
+\item
+  \textbf{Adaptivity is preserved.} Both hitting and sketch-probe
+  arguments work with actual adaptive decision trees.
+\item
+  \textbf{No fixed-to-moving support substitution occurs.} Every use of
+  static support geometry is explicit, and Section 10 isolates the
+  precise boundary.
+\end{enumerate}
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-boruchovsky2026allsymbol}{}}%
+Boruchovsky, Avital, Anina Gruica, Jonathan Niemann, and Eitan Yaakobi.
+2026. {``Serving Every Symbol: All-Symbol PIR and Batch Codes.''} In
+\emph{2026 IEEE International Symposium on Information Theory}. IEEE.
+\url{https://doi.org/10.1109/ISIT62367.2026.11653879}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-chandran2014luldc}{}}%
+Chandran, Nishanth, Bhavana Kanukurthi, and Rafail Ostrovsky. 2014.
+{``Locally Updatable and Locally Decodable Codes.''} In \emph{Theory of
+Cryptography Conference}, 8349:489--514. Lecture Notes in Computer
+Science. Springer. \url{https://doi.org/10.1007/978-3-642-54242-8_21}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-garg2026qws}{}}%
+Garg, Sumegha, Songhua He, Yuanzhi Li, Periklis A. Papakonstantinou, and
+Xin Yang. 2026. {``Systematic Data Structure Lower Bounds via the
+Query-with-Sketch Model.''} In \emph{41st Computational Complexity
+Conference (CCC 2026)}, 383:41:1--44. Leibniz International Proceedings
+in Informatics (LIPIcs). Schloss Dagstuhl -- Leibniz-Zentrum f{ü}r
+Informatik. \url{https://doi.org/10.4230/LIPIcs.CCC.2026.41}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-ishai2004batch}{}}%
+Ishai, Yuval, Eyal Kushilevitz, Rafail Ostrovsky, and Amit Sahai. 2004.
+{``Batch Codes and Their Applications.''} In \emph{Proceedings of the
+36th Annual ACM Symposium on Theory of Computing}, 262--71.
+\url{https://doi.org/10.1145/1007352.1007396}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-li2021improved}{}}%
+Li, Ray, and Mary Wootters. 2021. {``Improved Batch Code Lower
+Bounds.''} \url{https://arxiv.org/abs/2106.02163}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-maturana2021arbitrary}{}}%
+Maturana, Francisco, and K. V. Rashmi. 2021. {``Irregular Array Codes
+with Arbitrary Access Sets for Geo-Distributed Storage.''} In \emph{2021
+IEEE International Symposium on Information Theory}, 3002--7.
+\url{https://doi.org/10.1109/ISIT45174.2021.9517809}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-mazumdar2013update}{}}%
+Mazumdar, Arya, Venkat Chandar, and Gregory W. Wornell. 2013.
+{``Update-Efficiency and Local Repairability Limits for Capacity
+Approaching Codes.''} \url{https://arxiv.org/abs/1305.3224}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-oksner2026functional}{}}%
+Oksner, Kristiina, Henk D. L. Hollmann, Ago-Erik Riet, and Vitaly
+Skachek. 2026. {``On the Minimum Length of Functional Batch Codes with
+Small Recovery Sets.''} \url{https://arxiv.org/abs/2601.12302}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-paterson2009cbc}{}}%
+Paterson, M. B., D. R. Stinson, and R. Wei. 2009. {``Combinatorial Batch
+Codes.''} \emph{Advances in Mathematics of Communications} 3 (1):
+13--27. \url{https://doi.org/10.3934/amc.2009.3.13}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-rawat2016batchgraphs}{}}%
+Rawat, Ankit Singh, Zhao Song, Alexandros G. Dimakis, and Anna Gál.
+2016. {``Batch Codes Through Dense Graphs Without Short Cycles.''}
+\emph{IEEE Transactions on Information Theory} 62 (4): 1592--1604.
+\url{https://doi.org/10.1109/TIT.2016.2524007}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-thomas2017restricted}{}}%
+Thomas, Eldho K., and Vitaly Skachek. 2017. {``Explicit Constructions
+and Bounds for Batch Codes with Restricted Size of Reconstruction
+Sets.''} \url{https://arxiv.org/abs/1701.07579}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-vatedka2020worstcase}{}}%
+Vatedka, Shashank, Venkat Chandar, and Aslan Tchamkerten. 2020.
+{``\(O(\log\log n)\) Worst-Case Local Decoding and Update Efficiency for
+Data Compression.''} In \emph{2020 IEEE International Symposium on
+Information Theory}, 2371--76.
+\url{https://doi.org/10.1109/ISIT44484.2020.9173968}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-vatedka2020bigdata}{}}%
+Vatedka, Shashank, and Aslan Tchamkerten. 2020. {``Local Decode and
+Update for Big Data Compression.''} \emph{IEEE Transactions on
+Information Theory} 66 (9): 5790--5805.
+\url{https://doi.org/10.1109/TIT.2020.2999909}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-zhang2015restricted}{}}%
+Zhang, Hui, and Vitaly Skachek. 2015. {``Bounds for Batch Codes with
+Restricted Query Size.''} \url{https://arxiv.org/abs/1510.08883}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-zhang2020functional}{}}%
+Zhang, Yiwei, Tuvi Etzion, and Eitan Yaakobi. 2020. {``Bounds on the
+Length of Functional PIR and Batch Codes.''} \emph{IEEE Transactions on
+Information Theory} 66 (8): 4917--34.
+\url{https://doi.org/10.1109/TIT.2020.2977631}.
+
+\end{CSLReferences}
+
+\end{document}
