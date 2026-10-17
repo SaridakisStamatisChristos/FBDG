@@ -2,7 +2,7 @@
 title: "Dynamic Fixed-Batch Retrieval: Structured Codes and Random-Family Locality Barriers"
 author: "Stamatis-Christos Saridakis"
 date: "October 2026"
-bibliography: FBDG_FULL_PAPER_2026-10-13.bib
+bibliography: references.bib
 link-citations: true
 abstract: |
   We study a dynamic exact-retrieval problem in which a Boolean vector is maintained under point updates while each query asks for the contents of one set from a fixed family of sparse batches. We call the model Fixed-Batch Dynamic Gather (FBDG). The central question is whether a representation can simultaneously have very low write locality and very low recovery locality when every requested batch has size $w=\Theta(\log n)$ and one dynamic word contains $w$ bits. We prove a structure-versus-randomness separation at write locality two. On the positive side, an explicit Fano-based construction yields infinite families with $M=n$, $w=\Theta(\log n)$, two fixed update locations per source bit, and two adaptive-or-nonadaptive word probes per query. On the negative side, if $M=\Theta(n)$ batches are sampled independently and uniformly from the $w$-subsets of $[n]$, then with high probability every exact canonical representation in which each source coordinate has at most two fixed update locations requires $q=\Omega(w)$ probes, even when cell contents are arbitrary nonlinear functions and the decoder is fully adaptive. The proof uses a diffuse-versus-hub dichotomy for the fixed support system. Diffuse supports force a linear matching in some random batch uniformly over all support systems. Hub-concentrated supports reduce to a short-sketch problem over bounded residual source groups, where a self-contained adaptive decision-tree counting lemma forces linearly many residual probes. We additionally prove a state-local congestion inequality that applies even when write locations move with the state or history; it shows that any hypothetical $q=o(w)$ moving-support scheme for a random family must maintain high-influence write hubs at every reachable state. Thus the remaining frontier is not generic nonlinearity or adaptivity, but the power of moving support geometry.
@@ -74,9 +74,9 @@ These results yield a three-way frontier:
 
 ## 1.2 Contribution boundary
 
-The surrounding literature contains several closely related ingredients. Batch codes and combinatorial batch codes study retrieval from distributed storage [@ishai2004batch; @paterson2009cbc; @rawat2016batchgraphs]. Locally updatable and locally decodable codes and compression schemes explicitly study simultaneous read and write locality [@chandran2014luldc; @vatedka2020bigdata; @vatedka2020worstcase]. Arbitrary-access-set storage codes tailor coding to prescribed access families and optimize update cost [@maturana2021arbitrary]. Functional batch codes study recovery of prescribed linear combinations and, recently, bounded-size recovery sets [@zhang2020functional; @oksner2026functional; @boruchovsky2026allsymbol]. Query-with-Sketch gives a general modern framework for adaptive probing with a short global sketch [@garg2026qws].
+The surrounding literature contains several closely related ingredients. Batch codes and combinatorial batch codes study retrieval from distributed storage [@ishai2004batch; @paterson2009cbc; @rawat2016batchgraphs]. Locally updatable and locally decodable codes and compression schemes explicitly study simultaneous read and write locality [@chandran2014luldc; @vatedka2020bigdata; @vatedka2020worstcase]. Arbitrary-access-set storage codes tailor coding to prescribed access families and optimize update cost [@maturana2021arbitrary]. Functional batch codes study recovery of prescribed linear combinations and, recently, bounded-size recovery sets [@zhang2020functional; @oksner2026functional; @boruchovsky2026allsymbol]. Query-with-Sketch gives a general modern framework for adaptive probing with a short global sketch [@garg2026qws]. Dynamic cell-probe and Multiphase lower bounds provide an important neighboring lower-bound tradition [@patrascu2010multiphase; @larsen2020boolean; @larsen2026dynamicgraphs; @ko2025landscape; @ko2026boolean; @ko2026dynamicgraphs].
 
-Accordingly, we do **not** claim that local update plus local decode, two-replication support graphs, finite-geometry coding, or sketch-aided adaptive probing are new ideas. The bounded claim is narrower: within the literature searched through October 2026, we did not identify a materially equivalent theorem showing that a random fixed family of $\Theta(\log n)$-coordinate exact retrieval requests forces $\Omega(\log n)$ adaptive word probes under two **fixed** update locations per source coordinate for arbitrary nonlinear canonical encodings. We therefore describe the theorem as **likely distinct within the searched scope**, not as an absolute priority claim.
+Accordingly, we do **not** claim that local update plus local decode, two-replication support graphs, finite-geometry coding, sketch-aided adaptive probing, or the general dynamic cell-probe/Multiphase framework are new ideas. The bounded claim is narrower: within the literature searched through October 2026, we did not identify a materially equivalent theorem showing that a random fixed family of $\Theta(\log n)$-coordinate exact retrieval requests forces $\Omega(\log n)$ adaptive word probes under two **fixed** update locations per source coordinate for arbitrary nonlinear canonical encodings. We therefore describe the theorem as **likely distinct within the searched scope**, not as an absolute priority claim.
 
 # 2. Model and notation
 
@@ -96,6 +96,8 @@ The locality parameters are:
 - $q$: maximum number of dynamic cells probed by one query.
 
 The paper studies locality rather than word-operation time. In particular, the positive construction proves $q=2$ in the cell-probe/locality sense; it does not claim that every arbitrary packed output permutation can be assembled in $O(1)$ instructions on every standard word-RAM instruction set.
+
+**Cell-width normalization and robustness.** We use the same symbol $w$ for batch size and cell width deliberately. A query returns exactly $w$ bits, so choosing $w$-bit cells removes a trivial output-capacity explanation for a large probe lower bound: information-theoretically, one cell is large enough to hold the entire answer. The lower-bound proof is robust to replacing the cell width by any $b=\Theta(w)$. The diffuse branch is independent of cell capacity. In the hub branch, the capacity bounds $hw$ and $(h+1)w$ become $hb$ and $(h+1)b$, the residual groups remain of size $O(w^2)$ because $h=O(w)$ and $b=O(w)$, and the free-sketch length becomes $hb$; choosing the constant in $L=\Theta(h)$ as a function of the upper constant in $b/w$ preserves the final $q=\Omega(w)$ conclusion. We keep $b=w$ in the formal statement and proof to avoid a second size parameter. No claim is made here for cell widths growing asymptotically faster than $w$.
 
 ## 2.2 Canonical encodings and essential fixed supports
 
@@ -976,9 +978,15 @@ Maturana and Rashmi study array codes tailored to prescribed storage-node access
 
 Garg, He, Li, Papakonstantinou, and Yang develop the Query-with-Sketch model for systematic data-structure lower bounds, allowing an arbitrary short sketch followed by adaptive probes and using conditional min-entropy to lift no-sketch lower bounds [@garg2026qws]. The hub case in our proof has the same high-level architecture: hub cells become a sketch and residual encoded cells are strengthened to raw source-group probes. Because our hard distribution is a direct product and the target bits lie in distinct groups, the specialized Lemma 8.1 gives a shorter self-contained argument. We make no claim that sketch-aided decision-tree counting is new in itself.
 
-## 11.6 Novelty boundary after the October 2026 search
+## 11.6 Dynamic cell-probe and Multiphase lower bounds
 
-The literature search for this manuscript included batch codes, graph batch codes, functional batch/PIR codes, arbitrary-access-set codes, locally updatable/locally decodable codes, local decode/update compression, adaptive sketch-probe lower bounds, write locality, and dynamic cell-probe lower bounds. Recent 2026 work on functional batch codes with small recovery sets was included explicitly [@oksner2026functional]. No materially equivalent statement to Theorem 5.1 was found in that search.
+Pătraşcu's Multiphase problem was introduced as a central vehicle for dynamic lower bounds [@patrascu2010multiphase]. Subsequent work pushed unconditional dynamic cell-probe lower bounds beyond the logarithmic barrier for Boolean problems [@larsen2020boolean] and for natural dynamic graph problems [@larsen2026dynamicgraphs]. More recent work develops a unified Multiphase/communication framework [@ko2025landscape], obtains an $\Omega((\log n/\log\log n)^2)$ lower bound for a Boolean Multiphase instantiation [@ko2026boolean], and transfers the same scale to incremental graph problems including undirected shortest paths [@ko2026dynamicgraphs].
+
+FBDG lies next to this lineage but asks a different question. Classical dynamic cell-probe results measure update and query **time** for a dynamic problem, usually with unrestricted locations for the cells modified by an update. FBDG instead fixes a family of vector-valued retrieval requests and asks what exact recovery locality is forced by an exceptionally strong write-location restriction: each source coordinate may affect at most two fixed essential cells. Conversely, Theorem 5.1 does not imply the stronger time lower bounds obtained in Multiphase-style work. The two lines are therefore complementary rather than competing: Multiphase results characterize general dynamic hardness, whereas the FBDG separation isolates how prescribed incidence structure interacts with fixed write locality.
+
+## 11.7 Novelty boundary after the October 2026 search
+
+The literature search for this manuscript included batch codes, graph batch codes, functional batch/PIR codes, arbitrary-access-set codes, locally updatable/locally decodable codes, local decode/update compression, adaptive sketch-probe lower bounds, write locality, the Multiphase framework, and modern dynamic cell-probe lower bounds. Recent 2026 work on functional batch codes with small recovery sets and on near-quadratic-logarithmic dynamic cell-probe lower bounds was included explicitly [@oksner2026functional; @ko2026boolean; @ko2026dynamicgraphs]. No materially equivalent statement to Theorem 5.1 was found in that search.
 
 This is evidence for bounded distinctness, not a proof of global priority. Accordingly, the manuscript avoids the words “first,” “optimal,” and “state of the art” as absolute claims.
 
@@ -1013,6 +1021,8 @@ The main theorem has deliberately narrow scope.
 **Moving support.** The result does not cover state-dependent or history-dependent update locations. Section 4 shows that any sublinear-query escape must maintain high-congestion hubs, but it does not rule out moving hubs.
 
 **Canonicality.** The fixed-support theorem assumes the memory representation is a function of the current source state. Canonicality is used in the cell-local dependence lemma. The state-local congestion theorem does not need this global assumption, but the $\Omega(w)$ fixed-support proof does.
+
+**Cell width.** The formal model normalizes cell width to the batch size $w$. As noted in Section 2.1, the same asymptotic lower bound is robust to constant-factor cell widths $b=\Theta(w)$ after adjusting constants in the hub argument. Widths growing asymptotically faster than the answer size are outside the stated result.
 
 **Word-operation time.** The paper is a locality/cell-probe result. The structured construction guarantees two cell reads, not a universal constant instruction count for assembling every packed output under every standard word-RAM instruction set.
 
@@ -1091,7 +1101,7 @@ Main random-family theorem
 
 The general lower bounds are mathematical proofs, not empirical claims. The reproducibility artifact accompanying this manuscript therefore focuses on finite validation of the structured construction and on preserving the exact proof state.
 
-The script `fbdg_structured_validate.py` performs the following checks:
+The script `validation/fbdg_structured_validate.py` performs the following checks:
 
 1. Exhaustive validation of the fixed decoder assignment for the seven Fano queries over all $2^7$ states: $896/896$ state/query cases pass.
 2. Exhaustive validation of every valid cell-pair/line decoder relation over all $2^7$ states: $1536/1536$ cases pass.
@@ -1108,6 +1118,8 @@ Observed query-check counts in the retained run were:
 | 4 | 28 | 28 | 28,000 |
 | 5 | 35 | 35 | 7,000 |
 | 8 | 56 | 56 | 11,200 |
+
+The exact retained stdout is stored in `validation/EXPECTED_OUTPUT.txt`. Its SHA-256 is `3f4cf123386c0239858e0ef597a91b4650574447c7a5a0a77b1788ab2c242012`. `validation/manifest.json` records the command, Python assumptions, expected counts, checksum, and validator Git-blob identity used when the reproducibility package was frozen on 2026-10-17. The repository CI reruns the validator and requires byte-for-byte agreement with the retained output.
 
 These executions validate the finite implementation of the positive construction; they are not used as evidence for the asymptotic lower bound.
 
