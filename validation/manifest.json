@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "frozen_on": "2026-10-17",
+  "purpose": "Reproducibility manifest for the finite structured-construction validation used by the FBDG paper.",
+  "command": "python validation/fbdg_structured_validate.py",
+  "python_requirement": "Python 3.9+; standard library only",
+  "ci_python": "3.12",
+  "validator_path": "validation/fbdg_structured_validate.py",
+  "validator_git_blob_sha1_at_freeze": "1af22dd1e67412cbee5e9ed89c607625e0fc0c33",
+  "expected_output_path": "validation/EXPECTED_OUTPUT.txt",
+  "expected_output_sha256": "3f4cf123386c0239858e0ef597a91b4650574447c7a5a0a77b1788ab2c242012",
+  "checks": {
+    "fano_fixed_assignment_exhaustive_cases": 896,
+    "fano_all_valid_pair_exhaustive_cases": 1536,
+    "packed_family_t_values": [1, 2, 3, 4, 5, 8],
+    "packed_family_randomized_state_query_checks": {
+      "1": 7000,
+      "2": 14000,
+      "3": 21000,
+      "4": 28000,
+      "5": 7000,
+      "8": 11200
+    }
+  },
+  "scope": "Validates the finite positive structured construction only; it is not empirical evidence for the asymptotic lower bounds."
+}

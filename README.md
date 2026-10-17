@@ -5,7 +5,8 @@ Research artifact for **Dynamic Fixed-Batch Retrieval: Structured Codes and Rand
 **Author:** Stamatis-Christos Saridakis  
 **Research state:** October 2026  
 **Main theorem status:** human-checkable `PROVED`; not machine-formally verified  
-**Novelty status:** `LIKELY DISTINCT WITHIN SEARCH SCOPE`
+**Novelty status:** `LIKELY DISTINCT WITHIN SEARCH SCOPE`  
+**Submission state:** `READY WITH MINOR FIXES` after the 2026-10-17 publication-readiness audit; venue-specific formatting/rules remain separate.
 
 ## Core result
 
@@ -34,15 +35,17 @@ The fixed-support qualification is essential. Nothing in this repository claims 
 ├── Makefile
 ├── paper/
 │   ├── fbdg.md               # canonical manuscript source
-│   ├── fbdg.tex              # LaTeX export
-│   ├── fbdg.pdf              # rendered paper
-│   ├── fbdg.docx             # Word export
+│   ├── fbdg.tex              # generated LaTeX export
+│   ├── fbdg.pdf              # generated rendered paper
+│   ├── fbdg.docx             # generated Word export
 │   └── references.bib
 ├── proof/
 │   └── fixed_support_theorem.md
 ├── validation/
 │   ├── README.md
-│   └── fbdg_structured_validate.py
+│   ├── fbdg_structured_validate.py
+│   ├── EXPECTED_OUTPUT.txt
+│   └── manifest.json
 ├── audit/
 │   └── FINAL_RESEARCH_AUDIT_2026-10-13.md
 ├── history/
@@ -79,6 +82,8 @@ for every exact query algorithm, even with arbitrary nonlinear cell contents and
 
 The proof uses a uniform **diffuse-versus-hub dichotomy**. Diffuse supports yield an `Ω(w)` matching in some random batch; hub-concentrated supports reduce to an exact sketch-and-adaptive-probe problem on bounded residual source groups.
 
+The manuscript normalizes dynamic cell width to the batch size `w`. The lower-bound proof is robust to any cell width `b=Θ(w)`: capacity and sketch terms change by constant factors while the diffuse branch is unchanged. The paper keeps `b=w` to isolate the locality question cleanly and because the entire requested answer then fits information-theoretically in one cell.
+
 ## Structured upper bound
 
 The paper also gives an explicit Fano-based family with
@@ -97,18 +102,14 @@ The validation script uses only the Python standard library:
 python validation/fbdg_structured_validate.py
 ```
 
-Expected retained output includes:
+To compare against the frozen retained output:
 
-```text
-Fano fixed-assignment exhaustive state/query cases: 896
-Fano all-valid-pair exhaustive cases: 1536
-t= 1 result= (7, 7, 7000)
-t= 2 result= (14, 14, 14000)
-t= 3 result= (21, 21, 21000)
-t= 4 result= (28, 28, 28000)
-t= 5 result= (35, 35, 7000)
-t= 8 result= (56, 56, 11200)
+```bash
+python validation/fbdg_structured_validate.py > /tmp/fbdg-output.txt
+diff -u validation/EXPECTED_OUTPUT.txt /tmp/fbdg-output.txt
 ```
+
+`validation/manifest.json` records the command, Python assumptions, expected counts, and retained-output checksum. CI performs the same exact-output check.
 
 These checks validate the finite structured construction. They are not evidence for the asymptotic lower bound, which is mathematical.
 
@@ -128,6 +129,8 @@ pandoc paper/fbdg.md --citeproc --bibliography=paper/references.bib --standalone
 pandoc paper/fbdg.md --citeproc --bibliography=paper/references.bib --pdf-engine=xelatex -V geometry:margin=1in -V fontsize=10pt -o paper/fbdg.pdf
 ```
 
+`paper/fbdg.md` is the canonical manuscript source. Generated exports should be refreshed before a tagged archival release.
+
 ## Scientific boundary
 
 The exact frontier preserved by the manuscript is:
@@ -136,4 +139,4 @@ The exact frontier preserved by the manuscript is:
 - `random fixed-support u=2`: `q=Ω(w)`;
 - `unrestricted moving/history-dependent u=2`: full `Ω(w)` is **OPEN**.
 
-Please read `STATUS.md`, the formal package under `proof/`, and the final audit under `audit/` before reusing theorem statements.
+Please read `STATUS.md`, the formal package under `proof/`, and the audit materials before reusing theorem statements.

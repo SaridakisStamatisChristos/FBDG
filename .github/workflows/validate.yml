@@ -17,5 +17,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Validate reproducibility manifest
+        run: python -m json.tool validation/manifest.json > /dev/null
       - name: Run FBDG structured validation
-        run: python validation/fbdg_structured_validate.py
+        run: python validation/fbdg_structured_validate.py > /tmp/fbdg-output.txt
+      - name: Check retained output exactly
+        run: diff -u validation/EXPECTED_OUTPUT.txt /tmp/fbdg-output.txt
+      - name: Check expected-output checksum
+        run: echo "3f4cf123386c0239858e0ef597a91b4650574447c7a5a0a77b1788ab2c242012  validation/EXPECTED_OUTPUT.txt" | sha256sum -c -

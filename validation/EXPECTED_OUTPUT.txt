@@ -1,0 +1,8 @@
+Fano fixed-assignment exhaustive state/query cases: 896
+Fano all-valid-pair exhaustive cases: 1536
+t= 1 result= (7, 7, 7000)
+t= 2 result= (14, 14, 14000)
+t= 3 result= (21, 21, 21000)
+t= 4 result= (28, 28, 28000)
+t= 5 result= (35, 35, 7000)
+t= 8 result= (56, 56, 11200)
