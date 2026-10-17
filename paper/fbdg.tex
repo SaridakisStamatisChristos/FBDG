@@ -322,11 +322,20 @@ Yaakobi 2020}; \protect\hyperlink{ref-oksner2026functional}{Oksner et
 al. 2026}; \protect\hyperlink{ref-boruchovsky2026allsymbol}{Boruchovsky
 et al. 2026}). Query-with-Sketch gives a general modern framework for
 adaptive probing with a short global sketch
-(\protect\hyperlink{ref-garg2026qws}{Garg et al. 2026}).
+(\protect\hyperlink{ref-garg2026qws}{Garg et al. 2026}). Dynamic
+cell-probe and Multiphase lower bounds provide an important neighboring
+lower-bound tradition
+(\protect\hyperlink{ref-patrascu2010multiphase}{Pătraşcu 2010};
+\protect\hyperlink{ref-larsen2020boolean}{Larsen, Weinstein, and Yu
+2020}; \protect\hyperlink{ref-larsen2026dynamicgraphs}{Larsen and Yu
+2026}; \protect\hyperlink{ref-ko2025landscape}{Ko 2025},
+\protect\hyperlink{ref-ko2026boolean}{2026a},
+\protect\hyperlink{ref-ko2026dynamicgraphs}{2026b}).
 
 Accordingly, we do \textbf{not} claim that local update plus local
-decode, two-replication support graphs, finite-geometry coding, or
-sketch-aided adaptive probing are new ideas. The bounded claim is
+decode, two-replication support graphs, finite-geometry coding,
+sketch-aided adaptive probing, or the general dynamic
+cell-probe/Multiphase framework are new ideas. The bounded claim is
 narrower: within the literature searched through October 2026, we did
 not identify a materially equivalent theorem showing that a random fixed
 family of \(\Theta(\log n)\)-coordinate exact retrieval requests forces
@@ -373,6 +382,22 @@ particular, the positive construction proves \(q=2\) in the
 cell-probe/locality sense; it does not claim that every arbitrary packed
 output permutation can be assembled in \(O(1)\) instructions on every
 standard word-RAM instruction set.
+
+\textbf{Cell-width normalization and robustness.} We use the same symbol
+\(w\) for batch size and cell width deliberately. A query returns
+exactly \(w\) bits, so choosing \(w\)-bit cells removes a trivial
+output-capacity explanation for a large probe lower bound:
+information-theoretically, one cell is large enough to hold the entire
+answer. The lower-bound proof is robust to replacing the cell width by
+any \(b=\Theta(w)\). The diffuse branch is independent of cell capacity.
+In the hub branch, the capacity bounds \(hw\) and \((h+1)w\) become
+\(hb\) and \((h+1)b\), the residual groups remain of size \(O(w^2)\)
+because \(h=O(w)\) and \(b=O(w)\), and the free-sketch length becomes
+\(hb\); choosing the constant in \(L=\Theta(h)\) as a function of the
+upper constant in \(b/w\) preserves the final \(q=\Omega(w)\)
+conclusion. We keep \(b=w\) in the formal statement and proof to avoid a
+second size parameter. No claim is made here for cell widths growing
+asymptotically faster than \(w\).
 
 \hypertarget{canonical-encodings-and-essential-fixed-supports}{%
 \subsection{2.2 Canonical encodings and essential fixed
@@ -1422,18 +1447,54 @@ bits lie in distinct groups, the specialized Lemma 8.1 gives a shorter
 self-contained argument. We make no claim that sketch-aided
 decision-tree counting is new in itself.
 
+\hypertarget{dynamic-cell-probe-and-multiphase-lower-bounds}{%
+\subsection{11.6 Dynamic cell-probe and Multiphase lower
+bounds}\label{dynamic-cell-probe-and-multiphase-lower-bounds}}
+
+Pătraşcu's Multiphase problem was introduced as a central vehicle for
+dynamic lower bounds
+(\protect\hyperlink{ref-patrascu2010multiphase}{Pătraşcu 2010}).
+Subsequent work pushed unconditional dynamic cell-probe lower bounds
+beyond the logarithmic barrier for Boolean problems
+(\protect\hyperlink{ref-larsen2020boolean}{Larsen, Weinstein, and Yu
+2020}) and for natural dynamic graph problems
+(\protect\hyperlink{ref-larsen2026dynamicgraphs}{Larsen and Yu 2026}).
+More recent work develops a unified Multiphase/communication framework
+(\protect\hyperlink{ref-ko2025landscape}{Ko 2025}), obtains an
+\(\Omega((\log n/\log\log n)^2)\) lower bound for a Boolean Multiphase
+instantiation (\protect\hyperlink{ref-ko2026boolean}{Ko 2026a}), and
+transfers the same scale to incremental graph problems including
+undirected shortest paths
+(\protect\hyperlink{ref-ko2026dynamicgraphs}{Ko 2026b}).
+
+FBDG lies next to this lineage but asks a different question. Classical
+dynamic cell-probe results measure update and query \textbf{time} for a
+dynamic problem, usually with unrestricted locations for the cells
+modified by an update. FBDG instead fixes a family of vector-valued
+retrieval requests and asks what exact recovery locality is forced by an
+exceptionally strong write-location restriction: each source coordinate
+may affect at most two fixed essential cells. Conversely, Theorem 5.1
+does not imply the stronger time lower bounds obtained in
+Multiphase-style work. The two lines are therefore complementary rather
+than competing: Multiphase results characterize general dynamic
+hardness, whereas the FBDG separation isolates how prescribed incidence
+structure interacts with fixed write locality.
+
 \hypertarget{novelty-boundary-after-the-october-2026-search}{%
-\subsection{11.6 Novelty boundary after the October 2026
+\subsection{11.7 Novelty boundary after the October 2026
 search}\label{novelty-boundary-after-the-october-2026-search}}
 
 The literature search for this manuscript included batch codes, graph
 batch codes, functional batch/PIR codes, arbitrary-access-set codes,
 locally updatable/locally decodable codes, local decode/update
-compression, adaptive sketch-probe lower bounds, write locality, and
-dynamic cell-probe lower bounds. Recent 2026 work on functional batch
-codes with small recovery sets was included explicitly
-(\protect\hyperlink{ref-oksner2026functional}{Oksner et al. 2026}). No
-materially equivalent statement to Theorem 5.1 was found in that search.
+compression, adaptive sketch-probe lower bounds, write locality, the
+Multiphase framework, and modern dynamic cell-probe lower bounds. Recent
+2026 work on functional batch codes with small recovery sets and on
+near-quadratic-logarithmic dynamic cell-probe lower bounds was included
+explicitly (\protect\hyperlink{ref-oksner2026functional}{Oksner et al.
+2026}; \protect\hyperlink{ref-ko2026boolean}{Ko 2026a},
+\protect\hyperlink{ref-ko2026dynamicgraphs}{2026b}). No materially
+equivalent statement to Theorem 5.1 was found in that search.
 
 This is evidence for bounded distinctness, not a proof of global
 priority. Accordingly, the manuscript avoids the words ``first,''
@@ -1522,6 +1583,12 @@ representation is a function of the current source state. Canonicality
 is used in the cell-local dependence lemma. The state-local congestion
 theorem does not need this global assumption, but the \(\Omega(w)\)
 fixed-support proof does.
+
+\textbf{Cell width.} The formal model normalizes cell width to the batch
+size \(w\). As noted in Section 2.1, the same asymptotic lower bound is
+robust to constant-factor cell widths \(b=\Theta(w)\) after adjusting
+constants in the hub argument. Widths growing asymptotically faster than
+the answer size are outside the stated result.
 
 \textbf{Word-operation time.} The paper is a locality/cell-probe result.
 The structured construction guarantees two cell reads, not a universal
@@ -1656,8 +1723,8 @@ The reproducibility artifact accompanying this manuscript therefore
 focuses on finite validation of the structured construction and on
 preserving the exact proof state.
 
-The script \texttt{fbdg\_structured\_validate.py} performs the following
-checks:
+The script \texttt{validation/fbdg\_structured\_validate.py} performs
+the following checks:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1693,6 +1760,15 @@ Observed query-check counts in the retained run were:
 5 & 35 & 35 & 7,000 \\
 8 & 56 & 56 & 11,200 \\
 \end{longtable}
+
+The exact retained stdout is stored in
+\texttt{validation/EXPECTED\_OUTPUT.txt}. Its SHA-256 is
+\texttt{3f4cf123386c0239858e0ef597a91b4650574447c7a5a0a77b1788ab2c242012}.
+\texttt{validation/manifest.json} records the command, Python
+assumptions, expected counts, checksum, and validator Git-blob identity
+used when the reproducibility package was frozen on 2026-10-17. The
+repository CI reruns the validator and requires byte-for-byte agreement
+with the retained output.
 
 These executions validate the finite implementation of the positive
 construction; they are not used as evidence for the asymptotic lower
@@ -1768,6 +1844,31 @@ Ishai, Yuval, Eyal Kushilevitz, Rafail Ostrovsky, and Amit Sahai. 2004.
 36th Annual ACM Symposium on Theory of Computing}, 262--71.
 \url{https://doi.org/10.1145/1007352.1007396}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-ko2025landscape}{}}%
+Ko, Young Kun. 2025. {``Unifying the Landscape of Super-Logarithmic
+Dynamic Cell-Probe Lower Bounds.''}
+\url{https://arxiv.org/abs/2510.17717}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-ko2026boolean}{}}%
+---------. 2026a. {``An \(\Omega((\log n/\log\log n)^2)\) Cell-Probe
+Lower Bound for Dynamic Boolean Data Structures.''}
+\url{https://arxiv.org/abs/2603.25914}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-ko2026dynamicgraphs}{}}%
+---------. 2026b. {``\(\Omega((\log n/\log\log n)^2)\) Lower Bounds for
+Dynamic Graph Problems.''} \url{https://arxiv.org/abs/2610.10904}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-larsen2020boolean}{}}%
+Larsen, Kasper Green, Omri Weinstein, and Huacheng Yu. 2020. {``Crossing
+the Logarithmic Barrier for Dynamic Boolean Data Structure Lower
+Bounds.''} \emph{SIAM Journal on Computing} 49.
+\url{https://doi.org/10.1137/18M1198429}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-larsen2026dynamicgraphs}{}}%
+Larsen, Kasper Green, and Huacheng Yu. 2026. {``Super-Logarithmic Lower
+Bounds for Dynamic Graph Problems.''} \emph{SIAM Journal on Computing}
+55 (3): FOCS23-42-FOCS23-69. \url{https://doi.org/10.1137/24M1638215}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-li2021improved}{}}%
 Li, Ray, and Mary Wootters. 2021. {``Improved Batch Code Lower
 Bounds.''} \url{https://arxiv.org/abs/2106.02163}.
@@ -1792,6 +1893,11 @@ Small Recovery Sets.''} \url{https://arxiv.org/abs/2601.12302}.
 Paterson, M. B., D. R. Stinson, and R. Wei. 2009. {``Combinatorial Batch
 Codes.''} \emph{Advances in Mathematics of Communications} 3 (1):
 13--27. \url{https://doi.org/10.3934/amc.2009.3.13}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-patrascu2010multiphase}{}}%
+Pătraşcu, Mihai. 2010. {``Towards Polynomial Lower Bounds for Dynamic
+Problems.''} In \emph{Proceedings of the 42nd ACM Symposium on Theory of
+Computing}, 603--10. \url{https://doi.org/10.1145/1806689.1806772}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-rawat2016batchgraphs}{}}%
 Rawat, Ankit Singh, Zhao Song, Alexandros G. Dimakis, and Anna Gál.
