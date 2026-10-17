@@ -49,12 +49,15 @@ The fixed-support qualification is essential. Nothing in this repository claims 
 ├── audit/
 │   └── FINAL_RESEARCH_AUDIT_2026-10-13.md
 ├── history/
-│   ├── ALGORITHM_FOUNDRY_FBDG_PAPER_AND_PRIOR_ART_HANDOFF_2026-10-13.md
+│   ├── README.md
+│   ├── FBDG_PRIOR_ART_AND_PAPER_HISTORY_2026-10-13.md
 │   ├── FBDG_PAPER_DRAFT_v0_1_2026-10-13.md
 │   ├── FBDG_PAPER_STATE_v0_1_2026-10-13.md
 │   └── fbdg_references_v0_1_2026-10-13.bib
 └── .github/workflows/validate.yml
 ```
+
+`history/` contains dated research snapshots and continuity material retained for provenance and reproducibility. Those files are non-authoritative unless a current document explicitly incorporates them; see `history/README.md`.
 
 ## Main theorem
 
